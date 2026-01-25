@@ -1,6 +1,6 @@
-import { AppBar, Toolbar, Typography, Button, IconButton, Box, Container } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Box, Container, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
 import { Brightness4, Brightness7, Menu as MenuIcon } from '@mui/icons-material';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ColorModeContext } from '../../App';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
@@ -8,8 +8,37 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
     const theme = useTheme();
     const colorMode = useContext(ColorModeContext);
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
 
     const navItems = ['About', 'Services', 'Experience', 'Projects'];
+
+    const drawer = (
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+            <Typography variant="h6" sx={{ my: 2, fontWeight: 800, fontFamily: 'Outfit' }}>
+                ADITYA
+            </Typography>
+            <Divider />
+            <List>
+                {navItems.map((item) => (
+                    <ListItem key={item} disablePadding>
+                        <ListItemButton sx={{ textAlign: 'center' }} component="a" href={`#${item.toLowerCase()}`}>
+                            <ListItemText primary={item} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+            <Divider sx={{ my: 1 }} />
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, gap: 1 }}>
+                <IconButton onClick={(e) => { e.stopPropagation(); colorMode.toggleColorMode(); }} color="inherit">
+                    {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+                </IconButton>
+            </Box>
+        </Box>
+    );
 
     return (
         <AppBar
@@ -72,12 +101,33 @@ const Navbar = () => {
                     </Box>
 
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton color="inherit">
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerToggle}
+                        >
                             <MenuIcon />
                         </IconButton>
                     </Box>
                 </Toolbar>
             </Container>
+            <Box component="nav">
+                <Drawer
+                    variant="temporary"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                    }}
+                    sx={{
+                        display: { xs: 'block', md: 'none' },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
+                    }}
+                >
+                    {drawer}
+                </Drawer>
+            </Box>
         </AppBar>
     );
 };

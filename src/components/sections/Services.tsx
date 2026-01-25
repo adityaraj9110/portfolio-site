@@ -2,28 +2,14 @@ import { Box, Container, Typography, Grid, Paper, Stack, Button, Link } from '@m
 import { motion } from 'framer-motion';
 import { Layers, Monitor, Database, Cloud, Download } from 'lucide-react';
 
-const services = [
-    {
-        title: 'Full Stack Development',
-        description: 'Building scalable and efficient applications with expertise in front-end and back-end technologies, ensuring seamless integration and optimal performance.',
-        icon: <Layers size={32} />,
-    },
-    {
-        title: 'Front-End Development',
-        description: 'Creating responsive and high-performance web applications using React, Next.js, TypeScript, HTML, and CSS.',
-        icon: <Monitor size={32} />,
-    },
-    {
-        title: 'Back-End Development',
-        description: 'Developing robust and scalable back-end systems using Node.js, Express, SQL, and NoSQL databases, ensuring high availability and security.',
-        icon: <Database size={32} />,
-    },
-    {
-        title: 'DevOps & Cloud Solutions',
-        description: 'Expertise in Docker, CI/CD pipelines, and cloud management for automated deployments and scalable infrastructure.',
-        icon: <Cloud size={32} />,
-    }
-];
+import content from '../../data/content.json';
+
+const iconMap: { [key: string]: React.ReactNode } = {
+    Layers: <Layers size={32} />,
+    Monitor: <Monitor size={32} />,
+    Database: <Database size={32} />,
+    Cloud: <Cloud size={32} />,
+};
 
 const Services = () => {
     return (
@@ -73,14 +59,34 @@ const Services = () => {
 
                     {/* Right Side: Services Grid */}
                     <Grid size={{ xs: 12, md: 7 }}>
-                        <Grid container spacing={3}>
-                            {services.map((service, index) => (
+                        <Grid
+                            container
+                            spacing={3}
+                            component={motion.div}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: {
+                                        staggerChildren: 0.2
+                                    }
+                                }
+                            }}
+                        >
+                            {content.services.map((service, index) => (
                                 <Grid size={{ xs: 12, sm: 6 }} key={index}>
                                     <motion.div
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        variants={{
+                                            hidden: { opacity: 0, y: 50 },
+                                            visible: {
+                                                opacity: 1,
+                                                y: 0,
+                                                transition: { duration: 0.6, ease: "easeOut" }
+                                            }
+                                        }}
                                     >
                                         <Paper
                                             elevation={0}
@@ -96,11 +102,12 @@ const Services = () => {
                                                     bgcolor: 'rgba(255, 255, 255, 0.05)',
                                                     transform: 'translateY(-5px)',
                                                     borderColor: 'primary.main',
+                                                    boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)'
                                                 }
                                             }}
                                         >
                                             <Box sx={{ color: 'primary.main', mb: 3 }}>
-                                                {service.icon}
+                                                {iconMap[service.icon]}
                                             </Box>
                                             <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
                                                 {service.title}

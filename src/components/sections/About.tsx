@@ -1,18 +1,16 @@
 import { Box, Container, Grid, Typography, Stack, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 
+import content from '../../data/content.json';
+
 const About = () => {
-    const skills = [
-        'React Js', 'Next Js', 'TypeScript', 'Node Js', 'GraphQl',
-        'Material UI', 'Tailwind CSS', 'Redux', 'TanStack Query',
-        'Framer Motion', 'React-Hook-Form', 'SQL', 'CI/CD', 'Jest', 'Playwright'
-    ];
+    const [titleMain, titleSub] = content.about.title.split('\n');
 
     return (
         <Box id="about" sx={{ py: 15, bgcolor: 'background.paper' }}>
             <Container maxWidth="lg">
-                <Grid container spacing={8} alignItems="center">
-                    <Grid size={{ xs: 12, md: 6 }}>
+                <Grid container spacing={8} alignItems="center" justifyContent={"space-between"}>
+                    <Grid size={{ xs: 12, md: 8 }}>
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -20,17 +18,15 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <Typography variant="h2" gutterBottom>
-                                Full Stack <br />
-                                <span style={{ color: '#666' }}>Frontend Focused.</span>
+                                {titleMain} <br />
+                                <span style={{ color: '#666' }}>{titleSub}</span>
                             </Typography>
-                            <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'text.secondary', mb: 4 }}>
-                                I am a Software Engineer at Bigoh Notations with a passion for building robust, user-centric applications. With expertise in the modern Javascript ecosystem, I bridge the gap between complex backend logic and pixel-perfect frontend experiences.
-                                <br /><br />
-                                I have a strong track record of delivering both high-performance products (Costimizer, DigiLawyer) and highly customizable developer tools (One-SDK).
+                            <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'text.secondary', mb: 4, whiteSpace: 'pre-wrap' }}>
+                                {content.about.description}
                             </Typography>
 
                             <Stack direction="row" flexWrap="wrap" gap={1}>
-                                {skills.map((skill) => (
+                                {content.about.skills.map((skill) => (
                                     <Paper
                                         key={skill}
                                         elevation={0}
@@ -51,7 +47,7 @@ const About = () => {
                             </Stack>
                         </motion.div>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 6 }}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}

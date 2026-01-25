@@ -1,37 +1,7 @@
 import { Box, Container, Typography, Stack, Divider, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const PerspectiveExperience = [
-    {
-        company: 'Bigoh Notations PVT LTD',
-        role: 'Software Engineer',
-        period: 'Jan 2024 - Present',
-        location: 'Noida, UP',
-        description: 'Working on high-impact service-based and product-based projects, focusing on React, TypeScript, and AI-driven solutions.',
-        highlights: [
-            {
-                name: 'FrankieOne / One-SDK (Service)',
-                desc: 'Developed a customizable client-side JS library for KYC/IDV onboarding. Improved reliability and reduced integration effort for multiple clients.',
-                tech: 'ReactJs, Tailwind, MUI, TypeScript, Redux, React Hook Form'
-            },
-            {
-                name: 'FrankieOne Portal (Service)',
-                desc: 'Built key frontend modules for identity verification and AML fraud checks. Contributed to backend development using Node.js and SQL, and optimized existing APIs to reduce response times, improving overall system performance, operational efficiency, and audit transparency.',
-                tech: 'React.js, Tailwind, MUI, TypeScript, TanStack Query, Playwright, Node.js, SQL'
-            },
-            {
-                name: 'Costimizer (Product)',
-                desc: 'Cloud cost management platform. Built dashboards and optimized API calls to help users identify cost anomalies.',
-                tech: 'ReactJs, MUI, TypeScript, TanStack Query, Yup'
-            },
-            {
-                name: 'DigiLawyer (Product)',
-                desc: 'AI-powered legal-tech platform. Implemented AI-driven agentic workflows and optimized responsive UI.',
-                tech: 'ReactJs, Next.js, TypeScript, MUI, React Hook Form'
-            }
-        ]
-    }
-];
+import content from '../../data/content.json';
 
 const Experience = () => {
     return (
@@ -49,7 +19,7 @@ const Experience = () => {
                 </motion.div>
 
                 <Stack spacing={8}>
-                    {PerspectiveExperience.map((exp, index) => (
+                    {content.experience.map((exp, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 50 }}
@@ -93,7 +63,7 @@ const Experience = () => {
                                     </Grid>
                                 </Grid>
                             </Box>
-                            {index !== PerspectiveExperience.length - 1 && (
+                            {index !== content.experience.length - 1 && (
                                 <Divider sx={{ mt: 8, opacity: 0.5 }} />
                             )}
                         </motion.div>

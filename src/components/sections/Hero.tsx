@@ -1,7 +1,8 @@
 import { Box, Typography, Button, Container, Stack, Avatar } from '@mui/material';
 import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 import { ArrowForward, Download } from '@mui/icons-material';
-import { useEffect, useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import Hero3D from '../3d/Hero3D';
 
 const Counter = ({ value }: { value: number }) => {
     const count = useMotionValue(0);
@@ -19,6 +20,8 @@ const Counter = ({ value }: { value: number }) => {
     return <motion.span ref={ref}>{rounded}</motion.span>;
 };
 
+import content from '../../data/content.json';
+
 const Hero = () => {
     return (
         <Box
@@ -30,32 +33,12 @@ const Hero = () => {
                 pt: { xs: 15, md: 0 },
                 position: 'relative',
                 overflow: 'hidden',
+                paddingBottom: "24px",
+                zIndex: 1
             }}
         >
-            {/* Background Decorative Elements */}
-            <Box
-                component={motion.div}
-                animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                sx={{
-                    position: 'absolute',
-                    top: '10%',
-                    right: '5%',
-                    width: '400px',
-                    height: '400px',
-                    background: 'radial-gradient(circle, rgba(100,100,255,0.15) 0%, rgba(0,0,0,0) 70%)',
-                    borderRadius: '50%',
-                    filter: 'blur(60px)',
-                    zIndex: -1,
-                }}
-            />
+            {/* 3D Background */}
+            <Hero3D />
 
             <Container maxWidth="lg">
                 <Stack
@@ -63,34 +46,35 @@ const Hero = () => {
                     spacing={4}
                     alignItems="center"
                     justifyContent="space-between"
+                    sx={{ position: 'relative', zIndex: 1 }}
                 >
-                    <Box sx={{ maxWidth: '700px', textAlign: { xs: 'center', md: 'left' } }}>
+                    <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
                             <Typography
-                                variant="subtitle1"
+                                variant="h6"
                                 sx={{
-                                    fontWeight: 600,
-                                    letterSpacing: 3,
+                                    fontWeight: 700,
+                                    letterSpacing: 2,
                                     textTransform: 'uppercase',
                                     color: 'secondary.main',
                                     mb: 2,
                                 }}
                             >
-                                Full Stack Developer & AI Enthusiast
+                                {content.hero.subtitle}
                             </Typography>
                             <Typography
                                 variant="h1"
                                 sx={{
-                                    fontSize: { xs: '3rem', md: '5rem' },
+                                    fontSize: { xs: '3rem', md: '3.5rem' },
                                     lineHeight: 1.1,
                                     mb: 3,
                                 }}
                             >
-                                Aditya <span style={{ fontStyle: 'italic' }}>Raj</span>
+                                {content.hero.title}
                             </Typography>
                             <Typography
                                 variant="h5"
@@ -103,8 +87,7 @@ const Hero = () => {
                                     mx: { xs: 'auto', md: 0 }
                                 }}
                             >
-                                Software Engineer at Bigoh Notations.
-                                I specialize in building highly scalable AI-powered platforms and complex SDKs with a focus on premium UX/UI.
+                                {content.hero.description}
                             </Typography>
 
                             <Stack

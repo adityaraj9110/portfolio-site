@@ -1,0 +1,134 @@
+{
+    "hero": {
+        "subtitle": "Full Stack Developer & AI Enthusiast",
+        "title": "Aditya Raj",
+        "description": "Software Engineer at Bigoh Notations. I specialize in building highly scalable AI-powered platforms and complex SDKs with a focus on premium UX/UI."
+    },
+    "about": {
+        "title": "Full Stack \nFrontend Focused.",
+        "description": "I am a Software Engineer at Bigoh Notations with a passion for building robust, user-centric applications. With expertise in the modern Javascript ecosystem, I bridge the gap between complex backend logic and pixel-perfect frontend experiences.\n\nI have a strong track record of delivering both high-performance products (Costimizer, DigiLawyer) and highly customizable developer tools (One-SDK).",
+        "skills": [
+            "React Js",
+            "Next Js",
+            "TypeScript",
+            "Node Js",
+            "GraphQl",
+            "Material UI",
+            "Tailwind CSS",
+            "Redux",
+            "TanStack Query",
+            "Framer Motion",
+            "React-Hook-Form",
+            "SQL",
+            "CI/CD",
+            "Jest",
+            "Playwright"
+        ]
+    },
+    "services": [
+        {
+            "title": "Full Stack Development",
+            "description": "Building scalable and efficient applications with expertise in front-end and back-end technologies, ensuring seamless integration and optimal performance.",
+            "icon": "Layers"
+        },
+        {
+            "title": "Front-End Development",
+            "description": "Creating responsive and high-performance web applications using React, Next.js, TypeScript, HTML, and CSS.",
+            "icon": "Monitor"
+        },
+        {
+            "title": "Back-End Development",
+            "description": "Developing robust and scalable back-end systems using Node.js, Express, SQL, and NoSQL databases, ensuring high availability and security.",
+            "icon": "Database"
+        },
+        {
+            "title": "DevOps & Cloud Solutions",
+            "description": "Expertise in Docker, CI/CD pipelines, and cloud management for automated deployments and scalable infrastructure.",
+            "icon": "Cloud"
+        }
+    ],
+    "experience": [
+        {
+            "company": "Bigoh Notations PVT LTD",
+            "role": "Software Engineer",
+            "period": "Jan 2024 - Present",
+            "location": "Noida, UP",
+            "description": "Working on high-impact service-based and product-based projects, focusing on React, TypeScript, and AI-driven solutions.",
+            "highlights": [
+                {
+                    "name": "FrankieOne / One-SDK (Service)",
+                    "desc": "Developed a customizable client-side JS library for KYC/IDV onboarding. Improved reliability and reduced integration effort for multiple clients.",
+                    "tech": "ReactJs, Tailwind, MUI, TypeScript, Redux, React Hook Form, AWS"
+                },
+                {
+                    "name": "FrankieOne Portal (Service)",
+                    "desc": "Built key frontend modules for identity verification and AML fraud checks. Contributed to backend development using Node.js and SQL, and optimized existing APIs to reduce response times, improving overall system performance, operational efficiency, and audit transparency.",
+                    "tech": "React.js, Tailwind, MUI, TypeScript, TanStack Query, Playwright, Node.js, SQL, AWS"
+                },
+                {
+                    "name": "Costimizer (Product)",
+                    "desc": "Cloud cost management platform. Built dashboards and optimized API calls to help users identify cost anomalies.",
+                    "tech": "ReactJs, MUI, TypeScript, TanStack Query, Yup"
+                },
+                {
+                    "name": "DigiLawyer (Product)",
+                    "desc": "AI-powered legal-tech platform. Implemented AI-driven agentic workflows and optimized responsive UI.",
+                    "tech": "ReactJs, Next.js, TypeScript, MUI, React Hook Form"
+                }
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "Costimizer AI",
+            "description": "Cloud cost management platform to optimize infrastructure spending and identify cost anomalies.",
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+            "tags": [
+                "React",
+                "MUI",
+                "TanStack Query",
+                "Yup",
+                "GraphQl"
+            ],
+            "link": "https://costimizer.ai/"
+        },
+        {
+            "title": "DigiLawyer AI",
+            "description": "AI-powered legal-tech platform providing instant legal assxistance and documentation flows.",
+            "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000",
+            "tags": [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "AI",
+                "GraphQl"
+            ],
+            "link": "https://digilawyer.ai/"
+        },
+        {
+            "title": "FrankieOne One-SDK",
+            "description": "Highly customizable JS library for identity verification and anti-fraud onboarding.",
+            "image": "publicImages.fintech",
+            "tags": [
+                "TypeScript",
+                "React",
+                "Redux",
+                "SDK"
+            ]
+        },
+        {
+            "title": "FrankieOne Portal",
+            "description": "Built key frontend modules for identity verification and AML fraud checks. Contributed to backend development using Node.js and SQL, and optimized existing APIs to reduce response times, improving overall system performance, operational efficiency, and audit transparency.",
+            "image": "publicImages.fintech",
+            "tags": [
+                "TypeScript",
+                "React",
+                "Redux",
+                "Node.js",
+                "SQL",
+                "TanStack Query",
+                "Playwright"
+            ]
+        }
+    ]
+}
