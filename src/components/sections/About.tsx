@@ -1,0 +1,84 @@
+import { Box, Container, Grid, Typography, Stack, Paper } from '@mui/material';
+import { motion } from 'framer-motion';
+
+const About = () => {
+    const skills = [
+        'React Js', 'Next Js', 'TypeScript', 'Node Js', 'GraphQl',
+        'Material UI', 'Tailwind CSS', 'Redux', 'TanStack Query',
+        'Framer Motion', 'React-Hook-Form', 'SQL', 'CI/CD', 'Jest', 'Playwright'
+    ];
+
+    return (
+        <Box id="about" sx={{ py: 15, bgcolor: 'background.paper' }}>
+            <Container maxWidth="lg">
+                <Grid container spacing={8} alignItems="center">
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <Typography variant="h2" gutterBottom>
+                                Full Stack <br />
+                                <span style={{ color: '#666' }}>Frontend Focused.</span>
+                            </Typography>
+                            <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'text.secondary', mb: 4 }}>
+                                I am a Software Engineer at Bigoh Notations with a passion for building robust, user-centric applications. With expertise in the modern Javascript ecosystem, I bridge the gap between complex backend logic and pixel-perfect frontend experiences.
+                                <br /><br />
+                                I have a strong track record of delivering both high-performance products (Costimizer, DigiLawyer) and highly customizable developer tools (One-SDK).
+                            </Typography>
+
+                            <Stack direction="row" flexWrap="wrap" gap={1}>
+                                {skills.map((skill) => (
+                                    <Paper
+                                        key={skill}
+                                        elevation={0}
+                                        sx={{
+                                            px: 2,
+                                            py: 1,
+                                            borderRadius: 2,
+                                            bgcolor: 'background.default',
+                                            border: '1px solid',
+                                            borderColor: 'divider',
+                                            fontSize: '0.9rem',
+                                            fontWeight: 600
+                                        }}
+                                    >
+                                        {skill}
+                                    </Paper>
+                                ))}
+                            </Stack>
+                        </motion.div>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <Box
+                                component="img"
+                                src="https://github.com/adityaraj9110.png"
+                                sx={{
+                                    width: '100%',
+                                    borderRadius: 4,
+                                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                                    filter: 'grayscale(20%) kontrast(110%)',
+                                    '&:hover': {
+                                        filter: 'grayscale(0%)',
+                                        transition: 'filter 0.5s ease'
+                                    }
+                                }}
+                                alt="Aditya Raj Profile"
+                            />
+                        </motion.div>
+                    </Grid>
+                </Grid>
+            </Container>
+        </Box>
+    );
+};
+
+export default About;
