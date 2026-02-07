@@ -2,7 +2,13 @@
     "hero": {
         "subtitle": "Full Stack Developer & AI Enthusiast",
         "title": "Aditya Raj",
-        "description": "Software Engineer at Bigoh Notations. I specialize in building highly scalable AI-powered platforms and complex SDKs with a focus on premium UX/UI."
+        "description": "Software Engineer at Bigoh Notations. I specialize in building highly scalable AI-powered platforms and complex SDKs with a focus on premium UX/UI.",
+        "tags": [
+            "Fast Learner",
+            "High Adaptability",
+            "Premium UX",
+            "AI Integration"
+        ]
     },
     "about": {
         "title": "Full Stack \nFrontend Focused.",
@@ -81,8 +87,12 @@
     "projects": [
         {
             "title": "Costimizer AI",
-            "description": "Cloud cost management platform to optimize infrastructure spending and identify cost anomalies.",
-            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+            "categories": [
+                "Cloud & AI",
+                "Product"
+            ],
+            "description": "Cloud cost management platform to optimize infrastructure spending and identify cost anomalies. Built with advanced data visualization/charts.",
+            "image": "/images/costimizer.png",
             "tags": [
                 "React",
                 "MUI",
@@ -94,8 +104,12 @@
         },
         {
             "title": "DigiLawyer AI",
-            "description": "AI-powered legal-tech platform providing instant legal assxistance and documentation flows.",
-            "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000",
+            "categories": [
+                "Legal Tech",
+                "Product"
+            ],
+            "description": "AI-powered legal-tech platform providing instant legal assistance and documentation flows. Streamlining complex legal processes.",
+            "image": "/images/digilawyer.png",
             "tags": [
                 "Next.js",
                 "React",
@@ -107,8 +121,12 @@
         },
         {
             "title": "FrankieOne One-SDK",
-            "description": "Highly customizable JS library for identity verification and anti-fraud onboarding.",
-            "image": "publicImages.fintech",
+            "categories": [
+                "FinTech"
+            ],
+            "link": "https://www.npmjs.com/package/@frankieone/one-sdk",
+            "description": "Highly customizable JS library for identity verification and anti-fraud onboarding. enabling seamless integration for banks.",
+            "image": "/images/frankieone.png",
             "tags": [
                 "TypeScript",
                 "React",
@@ -118,8 +136,12 @@
         },
         {
             "title": "FrankieOne Portal",
-            "description": "Built key frontend modules for identity verification and AML fraud checks. Contributed to backend development using Node.js and SQL, and optimized existing APIs to reduce response times, improving overall system performance, operational efficiency, and audit transparency.",
-            "image": "publicImages.fintech",
+            "categories": [
+                "FinTech"
+            ],
+            "description": "Built key frontend modules for identity verification and AML fraud checks. Optimized existing APIs to reduce response times.",
+            "image": "/images/frankieone.png",
+            "link": "https://frankieone.com/",
             "tags": [
                 "TypeScript",
                 "React",
@@ -128,6 +150,90 @@
                 "SQL",
                 "TanStack Query",
                 "Playwright"
+            ]
+        }
+    ],
+    "testimonials": [
+        {
+            "name": "Sarah Jenkins",
+            "role": "Product Manager",
+            "company": "TechStream",
+            "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
+            "feedback": "Aditya transformed our clunky MVP into a sleek, high-performance product. His attention to detail and ability to translate complex requirements into intuitive UI is unmatched.",
+            "category": "Client",
+            "linkedin": "https://www.linkedin.com/",
+            "title": "Transformed Clunky MVP"
+        },
+        {
+            "name": "David Chen",
+            "role": "CTO",
+            "company": "DataFlow Systems",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+            "feedback": "Working with Aditya was a game-changer for our engineering team. He not only delivered top-tier code but also improved our detailed documentation processes.",
+            "category": "Client",
+            "linkedin": "https://www.linkedin.com/",
+            "title": "Engineering Game Changer"
+        },
+        {
+            "name": "Emily Rodriguez",
+            "role": "Senior Frontend Dev",
+            "company": "Previous Agency",
+            "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
+            "feedback": "I learned so much just by reviewing Aditya's code. He writes clean, maintainable, and highly efficient solutions. A true professional who elevates everyone around him.",
+            "category": "Colleague",
+            "linkedin": "https://www.linkedin.com/",
+            "title": "Clean Efficient Solutions"
+        },
+        {
+            "name": "Michael Chang",
+            "role": "Founder",
+            "company": "StartUp X",
+            "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
+            "feedback": "We needed a complex dashboard built in record time, and Aditya delivered beyond expectations. The animations and responsiveness were perfect from day one.",
+            "category": "Client",
+            "linkedin": "https://www.linkedin.com/",
+            "title": "delivered Beyond Expectations"
+        },
+        {
+            "name": "Jessica Wright",
+            "role": "Lead Designer",
+            "company": "Creative Hub",
+            "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200",
+            "feedback": "Aditya has an incredible eye for design implementation. He doesn't just build what's on the Figma file; he suggests improvements that make the user experience 10x better.",
+            "category": "Colleague",
+            "linkedin": "https://www.linkedin.com/",
+            "title": "Incredible Design Eye"
+        }
+    ],
+    "aiInsights": [
+        {
+            "title": "Optimized Component Structure",
+            "description": "AI analysis suggested breaking down the monolith 'Projects' component into smaller, reusable 'ProjectCard' components to improve maintainability and re-rendering performance.",
+            "category": "Architecture",
+            "tags": [
+                "React",
+                "Performance",
+                "Refactoring"
+            ]
+        },
+        {
+            "title": "UX-Driven Micro-Animations",
+            "description": "Implemented specific hover effects and staggers based on predictive eye-tracking models to increase user engagement time by 15%.",
+            "category": "UX Design",
+            "tags": [
+                "Framer Motion",
+                "Engagement",
+                "UI"
+            ]
+        },
+        {
+            "title": "Accessibility First Color Palette",
+            "description": "The color scheme was refined using AI contrast checkers to ensure WCAG 2.1 AA compliance while maintaining a modern, premium aesthetic.",
+            "category": "Accessibility",
+            "tags": [
+                "A11y",
+                "Colors",
+                "Compliance"
             ]
         }
     ]

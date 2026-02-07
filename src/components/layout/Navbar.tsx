@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography, Button, IconButton, Box, Container, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
-import { Brightness4, Brightness7, Menu as MenuIcon } from '@mui/icons-material';
+import { Brightness4, Brightness7, Menu as MenuIcon, Download } from '@mui/icons-material';
 import { useContext, useState } from 'react';
 import { ColorModeContext } from '../../App';
 import { useTheme } from '@mui/material/styles';
@@ -90,13 +90,23 @@ const Navbar = () => {
                             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
                         </IconButton>
                         <Button
-                            variant="contained"
-                            color="primary"
-                            sx={{ ml: 2, px: 3 }}
+                            variant="outlined"
+                            color="inherit"
+                            sx={{
+                                ml: 2,
+                                px: 3,
+                                borderColor: 'divider',
+                                '&:hover': {
+                                    borderColor: 'primary.main',
+                                    bgcolor: 'rgba(25, 118, 210, 0.04)'
+                                }
+                            }}
+                            startIcon={<Download />}
                             component="a"
-                            href="mailto:adityasrivastav0853@gmail.com"
+                            href="/resume.pdf"
+                            download="Aditya_Raj_Resume.pdf"
                         >
-                            Hire Me
+                            Resume
                         </Button>
                     </Box>
 

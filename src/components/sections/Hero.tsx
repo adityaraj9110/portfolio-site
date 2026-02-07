@@ -1,28 +1,15 @@
-import { Box, Typography, Button, Container, Stack, Avatar } from '@mui/material';
-import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+import { Box, Typography, Button, Container, Stack, Avatar, useTheme } from '@mui/material';
+import { motion } from 'framer-motion';
 import { ArrowForward, Download } from '@mui/icons-material';
-import { useRef, useEffect } from 'react';
 import Hero3D from '../3d/Hero3D';
 
-const Counter = ({ value }: { value: number }) => {
-    const count = useMotionValue(0);
-    const rounded = useTransform(count, (latest) => Math.round(latest));
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
 
-    useEffect(() => {
-        if (isInView) {
-            const controls = animate(count, value, { duration: 2, ease: "easeOut" });
-            return controls.stop;
-        }
-    }, [isInView, count, value]);
-
-    return <motion.span ref={ref}>{rounded}</motion.span>;
-};
 
 import content from '../../data/content.json';
 
 const Hero = () => {
+    const theme = useTheme();
+
     return (
         <Box
             id="hero"
@@ -56,12 +43,27 @@ const Hero = () => {
                         >
                             <Typography
                                 variant="h6"
+                                component={motion.div}
+                                initial={{ backgroundPosition: '200% center' }}
+                                animate={{ backgroundPosition: '-200% center' }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 3,
+                                    ease: "linear"
+                                }}
                                 sx={{
                                     fontWeight: 700,
                                     letterSpacing: 2,
                                     textTransform: 'uppercase',
-                                    color: 'secondary.main',
                                     mb: 2,
+                                    background: `linear-gradient(to right, ${theme.palette.text.secondary} 20%, ${theme.palette.primary.main} 40%, ${theme.palette.primary.main} 60%, ${theme.palette.text.secondary} 80%)`,
+                                    backgroundSize: '200% auto',
+                                    color: 'transparent',
+                                    backgroundClip: 'text',
+                                    textFillColor: 'transparent',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    display: 'inline-block'
                                 }}
                             >
                                 {content.hero.subtitle}
@@ -127,56 +129,56 @@ const Hero = () => {
                                 </Button>
                             </Stack>
 
-                            {/* Stats Section */}
-                            <Stack
-                                direction="row"
-                                spacing={{ xs: 2, md: 6 }}
-                                sx={{
-                                    p: 3,
-                                    borderRadius: 4,
-                                    bgcolor: 'rgba(255, 255, 255, 0.03)',
-                                    backdropFilter: 'blur(10px)',
-                                    border: '1px solid rgba(255, 255, 255, 0.05)',
-                                    width: 'fit-content',
-                                    mx: { xs: 'auto', md: 0 },
-                                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
-                                }}
-                            >
-                                {[
-                                    { label: 'Experience', value: 3 },
-                                    { label: 'Projects', value: 25 },
-                                    { label: 'Clients', value: 4 }
-                                ].map((stat, i) => (
-                                    <Box key={i} sx={{ textAlign: 'center' }}>
-                                        <Typography
-                                            variant="h3"
+                            <Box sx={{
+                                display: 'flex',
+                                gap: 2,
+                                flexWrap: 'wrap',
+                                justifyContent: { xs: 'center', md: 'flex-start' }
+                            }}>
+                                {(content.hero as any).tags?.map((tag: string, index: number) => (
+                                    <motion.div
+                                        key={tag}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5 + (index * 0.1) }}
+                                    >
+                                        <Box
                                             sx={{
-                                                fontWeight: 800,
-                                                color: 'primary.main',
-                                                fontSize: { xs: '1.8rem', md: '2.5rem' },
-                                                mb: 0.5,
+                                                px: 2,
+                                                py: 1,
+                                                borderRadius: 'full',
+                                                bgcolor: 'rgba(255,255,255,0.05)',
+                                                border: '1px solid rgba(255,255,255,0.1)',
+                                                backdropFilter: 'blur(10px)',
                                                 display: 'flex',
                                                 alignItems: 'center',
-                                                justifyContent: 'center'
+                                                gap: 1
                                             }}
                                         >
-                                            <Counter value={stat.value} />+
-                                        </Typography>
-                                        <Typography
-                                            variant="body2"
-                                            sx={{
-                                                color: 'text.secondary',
-                                                textTransform: 'uppercase',
-                                                letterSpacing: 1,
-                                                fontSize: { xs: '0.7rem', md: '0.8rem' },
-                                                fontWeight: 600
-                                            }}
-                                        >
-                                            {stat.label}
-                                        </Typography>
-                                    </Box>
+                                            <motion.div
+                                                animate={{
+                                                    scale: [1, 1.2, 1],
+                                                    opacity: [0.5, 1, 0.5]
+                                                }}
+                                                transition={{
+                                                    duration: 2,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut"
+                                                }}
+                                                style={{
+                                                    width: 8,
+                                                    height: 8,
+                                                    borderRadius: '50%',
+                                                    backgroundColor: '#4dabf5'
+                                                }}
+                                            />
+                                            <Typography variant="body2" fontWeight={600} color="text.secondary">
+                                                {tag}
+                                            </Typography>
+                                        </Box>
+                                    </motion.div>
                                 ))}
-                            </Stack>
+                            </Box>
                         </motion.div>
                     </Box>
 

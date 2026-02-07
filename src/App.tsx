@@ -7,6 +7,8 @@ import About from './components/sections/About';
 import Experience from './components/sections/Experience';
 import Projects from './components/sections/Projects';
 import Services from './components/sections/Services';
+import Reviews from './components/sections/Reviews';
+import AIInsights from './components/sections/AIInsights';
 import Footer from './components/layout/Footer';
 import FloatingActions from './components/layout/FloatingActions';
 import { motion } from 'framer-motion';
@@ -32,7 +34,7 @@ function App() {
     <ColorModeContext.Provider value={{ ...colorMode, mode }}>
       <ThemeProvider theme={currentTheme}>
         <CssBaseline />
-        <div style={{ overflowX: 'hidden' }}>
+        <div>
           <Navbar />
           <motion.main
             initial={{ opacity: 0 }}
@@ -44,6 +46,8 @@ function App() {
             <Services />
             <Experience />
             <Projects />
+            <AIInsights />
+            <Reviews />
           </motion.main>
           <Footer />
           <FloatingActions />

@@ -6,15 +6,18 @@ import content from '../../data/content.json';
 const Experience = () => {
     return (
         <Box id="experience" sx={{ py: 15 }}>
-            <Container maxWidth="md">
+            <Container maxWidth="lg">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 10 }}>
+                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 4, fontWeight: 800 }}>
                         Experience & Projects
+                    </Typography>
+                    <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 600, mx: 'auto' }}>
+                        My professional journey through various roles and impactful projects.
                     </Typography>
                 </motion.div>
 

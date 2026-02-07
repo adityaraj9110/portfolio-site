@@ -1,21 +1,35 @@
-import { Box, Container, Typography, Grid, Card, CardContent, CardMedia, Button, Stack, Chip } from '@mui/material';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import { publicImages } from '../../assets';
-
+import { useState, useMemo } from 'react';
+import { Box, Container, Typography, ToggleButton, ToggleButtonGroup, useTheme, Grid } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github } from 'lucide-react';
+import { Button } from '@mui/material';
+import ProjectCard from '../ProjectCard';
 import content from '../../data/content.json';
 
-const getImage = (imagePath: string) => {
-    if (imagePath.startsWith('publicImages.')) {
-        const key = imagePath.split('.')[1];
-        return publicImages[key as keyof typeof publicImages];
-    }
-    return imagePath;
-};
-
-
-
 const Projects = () => {
+    const theme = useTheme();
+    const [selectedCategory, setSelectedCategory] = useState('All');
+
+    // Extract unique categories
+    const categories = useMemo(() => {
+        const allCats = content.projects.flatMap(p => p.categories); // Flatten array of arrays
+        return ['All', ...Array.from(new Set(allCats))];
+    }, []);
+
+    const filteredProjects = useMemo(() => {
+        if (selectedCategory === 'All') return content.projects;
+        return content.projects.filter(p => p.categories.includes(selectedCategory));
+    }, [selectedCategory]);
+
+    const handleCategoryChange = (
+        _event: React.MouseEvent<HTMLElement>,
+        newCategory: string | null,
+    ) => {
+        if (newCategory !== null) {
+            setSelectedCategory(newCategory);
+        }
+    };
+
     return (
         <Box id="projects" sx={{ py: 15, bgcolor: 'background.paper' }}>
             <Container maxWidth="lg">
@@ -25,88 +39,82 @@ const Projects = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 8 }}>
+                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 2, fontWeight: 800 }}>
                         Selected Projects
+                    </Typography>
+                    <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 6, maxWidth: 600, mx: 'auto' }}>
+                        A showcase of my recent work, featuring complex web applications and AI-powered solutions.
                     </Typography>
                 </motion.div>
 
+                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 8 }}>
+                    <ToggleButtonGroup
+                        value={selectedCategory}
+                        exclusive
+                        onChange={handleCategoryChange}
+                        aria-label="project category"
+                        sx={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            justifyContent: 'center',
+                            gap: 1,
+                            bgcolor: 'transparent',
+                            '& .MuiToggleButton-root': {
+                                border: '1px solid',
+                                borderColor: 'divider',
+                                borderRadius: '20px !important',
+                                px: 3,
+                                py: 1,
+                                textTransform: 'capitalize',
+                                fontWeight: 600,
+                                color: 'text.secondary',
+                                bgcolor: 'background.default',
+                                '&.Mui-selected': {
+                                    bgcolor: 'primary.main',
+                                    color: theme.palette.getContrastText(theme.palette.primary.main),
+                                    borderColor: 'primary.main',
+                                    '&:hover': {
+                                        bgcolor: 'primary.dark',
+                                    }
+                                }
+                            }
+                        }}
+                    >
+                        {categories.map((category) => (
+                            <ToggleButton key={category} value={category}>
+                                {category}
+                            </ToggleButton>
+                        ))}
+                    </ToggleButtonGroup>
+                </Box>
+
                 <Grid container spacing={4}>
-                    {content.projects.map((project, index) => (
-                        <Grid size={{ xs: 12, md: 4 }} key={index}>
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                style={{
-                                    height: '100%'
-                                }}
-                            >
-                                <Card
-                                    elevation={0}
-                                    sx={{
-                                        height: '100%',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        border: '1px solid',
-                                        borderColor: 'divider',
-                                        bgcolor: 'background.default',
-                                        overflow: 'hidden',
-                                    }}
+                    <AnimatePresence mode='popLayout'>
+                        {filteredProjects.map((project) => (
+                            <Grid size={{ xs: 12, md: 6, lg: 4 }} key={project.title}>
+                                <motion.div
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                    transition={{ duration: 0.3 }}
                                 >
-                                    <CardMedia
-                                        component="img"
-                                        height="240"
-                                        image={getImage(project.image)}
-                                        alt={project.title}
-                                        sx={{ objectFit: 'fill', transition: 'transform 0.5s ease', '&:hover': { transform: 'scale(1.05)' } }}
+                                    <ProjectCard
+                                        project={project}
                                     />
-                                    <CardContent sx={{ flexGrow: 1, p: 4 }}>
-                                        <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap', gap: 1 }}>
-                                            {project.tags.map(tag => (
-                                                <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ borderRadius: 1 }} />
-                                            ))}
-                                        </Stack>
-                                        <Typography variant="h5" sx={{ fontWeight: 700, mb: 1.5 }}>
-                                            {project.title}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                                            {project.description}
-                                        </Typography>
-                                        <Stack direction="row" spacing={2} sx={{ mt: 'auto' }}>
-                                            {(project as any).link && <Button
-                                                startIcon={<ExternalLink size={18} />}
-                                                sx={{ fontWeight: 700 }}
-                                                component="a"
-                                                href={(project as any).link}
-                                                target="_blank"
-                                            >
-                                                Live
-                                            </Button>}
-                                            {(project as any).github && <Button
-                                                startIcon={<Github size={18} />}
-                                                color="inherit"
-                                                component="a"
-                                                href={(project as any).github}
-                                                target="_blank"
-                                            >
-                                                Code
-                                            </Button>}
-                                        </Stack>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-                        </Grid>
-                    ))}
+                                </motion.div>
+                            </Grid>
+                        ))}
+                    </AnimatePresence>
                 </Grid>
+
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <Box sx={{ mt: 8, textAlign: 'center' }}>
+                    <Box sx={{ mt: 12, textAlign: 'center' }}>
                         <Button
                             variant="outlined"
                             size="large"
