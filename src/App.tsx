@@ -42,12 +42,12 @@ function App() {
             transition={{ duration: 0.8 }}
           >
             <Hero />
-            <About />
+            <Projects />
+            <Reviews />
+            <AIInsights />
             <Services />
             <Experience />
-            <Projects />
-            <AIInsights />
-            <Reviews />
+            <About />
           </motion.main>
           <Footer />
           <FloatingActions />

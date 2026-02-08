@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Typography, Stack, Paper, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
-
+import { styles } from './About.styles';
 import content from '../../data/content.json';
 
 const About = () => {
@@ -8,7 +8,7 @@ const About = () => {
     const [titleMain, titleSub] = content.about.title.split('\n');
 
     return (
-        <Box id="about" sx={{ py: 15, bgcolor: 'background.paper' }}>
+        <Box id="about" sx={styles.container}>
             <Container maxWidth="lg">
                 <Grid container spacing={8} alignItems="center" justifyContent={"space-between"}>
                     <Grid size={{ xs: 12, md: 8 }}>
@@ -29,40 +29,18 @@ const About = () => {
                                         duration: 3,
                                         ease: "linear"
                                     }}
-                                    sx={{
-                                        background: `linear-gradient(to right, ${theme.palette.text.secondary} 20%, ${theme.palette.primary.main} 40%, ${theme.palette.primary.main} 60%, ${theme.palette.text.secondary} 80%)`,
-                                        backgroundSize: '200% auto',
-                                        color: 'transparent',
-                                        backgroundClip: 'text',
-                                        textFillColor: 'transparent',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        display: 'inline-block'
-                                    }}
+                                    sx={styles.animatedTitle(theme)}
                                 >
                                     {titleSub}
                                 </Box>
                             </Typography>
-                            <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'text.secondary', mb: 4, whiteSpace: 'pre-wrap' }}>
+                            <Typography variant="body1" sx={styles.description}>
                                 {content.about.description}
                             </Typography>
 
                             <Stack direction="row" flexWrap="wrap" gap={1}>
                                 {content.about.skills.map((skill) => (
-                                    <Paper
-                                        key={skill}
-                                        elevation={0}
-                                        sx={{
-                                            px: 2,
-                                            py: 1,
-                                            borderRadius: 2,
-                                            bgcolor: 'background.default',
-                                            border: '1px solid',
-                                            borderColor: 'divider',
-                                            fontSize: '0.9rem',
-                                            fontWeight: 600
-                                        }}
-                                    >
+                                    <Paper key={skill} elevation={0} sx={styles.skillChip}>
                                         {skill}
                                     </Paper>
                                 ))}
@@ -79,16 +57,7 @@ const About = () => {
                             <Box
                                 component="img"
                                 src="https://github.com/adityaraj9110.png"
-                                sx={{
-                                    width: '100%',
-                                    borderRadius: 4,
-                                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                                    filter: 'grayscale(20%) kontrast(110%)',
-                                    '&:hover': {
-                                        filter: 'grayscale(0%)',
-                                        transition: 'filter 0.5s ease'
-                                    }
-                                }}
+                                sx={styles.profileImage}
                                 alt="Aditya Raj Profile"
                             />
                         </motion.div>

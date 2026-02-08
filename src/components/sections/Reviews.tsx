@@ -2,9 +2,8 @@ import { useState, useMemo } from 'react';
 import { Box, Container, Typography, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import ReviewCard from '../ReviewCard';
+import { styles } from './Reviews.styles';
 import content from '../../data/content.json';
-
-
 
 const Reviews = () => {
     const theme = useTheme();
@@ -31,7 +30,7 @@ const Reviews = () => {
     };
 
     return (
-        <Box id="reviews" sx={{ py: 15, bgcolor: 'background.default' }}>
+        <Box id="reviews" sx={styles.container}>
             <Container maxWidth="lg">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -39,42 +38,21 @@ const Reviews = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 2, fontWeight: 800 }}>
+                    <Typography variant="h3" gutterBottom align="center" sx={styles.sectionTitle}>
                         What People Say
                     </Typography>
-                    <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 600, mx: 'auto' }}>
+                    <Typography variant="h6" align="center" color="text.secondary" sx={styles.sectionSubtitle}>
                         Feedback from clients and colleagues I've had the pleasure of working with.
                     </Typography>
                 </motion.div>
 
-                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 8 }}>
+                <Box sx={styles.filterContainer}>
                     <ToggleButtonGroup
                         value={selectedCategory}
                         exclusive
                         onChange={handleCategoryChange}
                         aria-label="testimonial category"
-                        sx={{
-                            bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-                            padding: 0.5,
-                            borderRadius: '12px !important',
-                            '& .MuiToggleButton-root': {
-                                border: 'none',
-                                borderRadius: '8px !important',
-                                px: 3,
-                                py: 1,
-                                textTransform: 'capitalize',
-                                fontWeight: 600,
-                                color: 'text.secondary',
-                                '&.Mui-selected': {
-                                    bgcolor: 'background.paper',
-                                    color: 'primary.main',
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                                    '&:hover': {
-                                        bgcolor: 'background.paper',
-                                    }
-                                }
-                            }
-                        }}
+                        sx={styles.toggleButtonGroup(theme)}
                     >
                         {categories.map((category: string) => (
                             <ToggleButton key={category} value={category}>
@@ -85,41 +63,11 @@ const Reviews = () => {
                 </Box>
 
                 <motion.div>
-                    <Box
-                        className="reviews-marquee-container"
-                        sx={{
-                            overflow: 'hidden',
-                            width: '100%',
-                            position: 'relative',
-                            py: 4,
-                            '&:hover .reviews-marquee-track': {
-                                animationPlayState: 'paused'
-                            }
-                        }}
-                    >
-                        <Box
-                            className="reviews-marquee-track"
-                            sx={{
-                                display: 'flex',
-                                gap: 4,
-                                width: 'fit-content',
-                                animation: 'scroll-marquee 90s linear infinite',
-                                '@keyframes scroll-marquee': {
-                                    '0%': { transform: 'translateX(0)' },
-                                    '100%': { transform: 'translateX(-50%)' }
-                                }
-                            }}
-                        >
+                    <Box className="reviews-marquee-container" sx={styles.marqueeContainer}>
+                        <Box className="reviews-marquee-track" sx={styles.marqueeTrack}>
                             {/* Duplicate list 2 times for seamless loop */}
                             {[...filteredTestimonials, ...filteredTestimonials].map((testimonial, index) => (
-                                <Box
-                                    key={`${testimonial.name}-${index}`}
-                                    sx={{
-                                        minWidth: { xs: '300px', md: '400px' },
-                                        maxWidth: { xs: '300px', md: '400px' },
-                                        flexShrink: 0
-                                    }}
-                                >
+                                <Box key={`${testimonial.name}-${index}`} sx={styles.reviewCardContainer}>
                                     <ReviewCard {...testimonial} />
                                 </Box>
                             ))}

@@ -1,11 +1,11 @@
 import { Box, Container, Typography, Stack, Divider, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
-
+import { styles } from './Experience.styles';
 import content from '../../data/content.json';
 
 const Experience = () => {
     return (
-        <Box id="experience" sx={{ py: 15 }}>
+        <Box id="experience" sx={styles.container}>
             <Container maxWidth="lg">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -13,10 +13,10 @@ const Experience = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 4, fontWeight: 800 }}>
+                    <Typography variant="h3" gutterBottom align="center" sx={styles.sectionTitle}>
                         Experience & Projects
                     </Typography>
-                    <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 600, mx: 'auto' }}>
+                    <Typography variant="h6" align="center" color="text.secondary" sx={styles.sectionSubtitle}>
                         My professional journey through various roles and impactful projects.
                     </Typography>
                 </motion.div>
@@ -30,34 +30,34 @@ const Experience = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
-                            <Box sx={{ position: 'relative' }}>
+                            <Box sx={styles.experienceContainer}>
                                 <Grid container spacing={4}>
                                     <Grid size={{ xs: 12, md: 3 }}>
-                                        <Typography variant="h6" sx={{ fontWeight: 700, opacity: 0.6 }}>
+                                        <Typography variant="h6" sx={styles.period}>
                                             {exp.period}
                                         </Typography>
                                     </Grid>
                                     <Grid size={{ xs: 12, md: 9 }}>
-                                        <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
+                                        <Typography variant="h5" sx={styles.role}>
                                             {exp.role}
                                         </Typography>
-                                        <Typography variant="h6" color="primary" sx={{ mb: 1, fontSize: '1.2rem' }}>
+                                        <Typography variant="h6" color="primary" sx={styles.company}>
                                             {exp.company}
                                         </Typography>
-                                        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                                        <Typography variant="body1" color="text.secondary" sx={styles.description}>
                                             {exp.description}
                                         </Typography>
 
                                         <Stack spacing={4}>
                                             {exp.highlights.map((item, i) => (
                                                 <Box key={i}>
-                                                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: '1.1rem' }}>
+                                                    <Typography variant="h6" sx={styles.highlightName}>
                                                         {item.name}
                                                     </Typography>
-                                                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                                                    <Typography variant="body2" color="text.secondary" sx={styles.highlightDesc}>
                                                         {item.desc}
                                                     </Typography>
-                                                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'primary.main' }}>
+                                                    <Typography variant="caption" sx={styles.highlightTech}>
                                                         {item.tech}
                                                     </Typography>
                                                 </Box>
@@ -67,7 +67,7 @@ const Experience = () => {
                                 </Grid>
                             </Box>
                             {index !== content.experience.length - 1 && (
-                                <Divider sx={{ mt: 8, opacity: 0.5 }} />
+                                <Divider sx={styles.divider} />
                             )}
                         </motion.div>
                     ))}

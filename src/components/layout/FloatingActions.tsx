@@ -1,22 +1,13 @@
 import { Box, Fab, Tooltip, Zoom, useTheme } from '@mui/material';
 import { Download, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { styles } from './FloatingActions.styles';
 
 const FloatingActions = () => {
     const theme = useTheme();
 
     return (
-        <Box
-            sx={{
-                position: 'fixed',
-                bottom: { xs: 20, md: 40 },
-                right: { xs: 20, md: 40 },
-                zIndex: 1000,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2,
-            }}
-        >
+        <Box sx={styles.container}>
             <Tooltip title="Hire Me" placement="left" TransitionComponent={Zoom} arrow>
                 <motion.div
                     whileHover={{ scale: 1.1 }}
@@ -28,21 +19,9 @@ const FloatingActions = () => {
                     <Box
                         component="a"
                         href="mailto:adityasrivastav0853@gmail.com"
-                        sx={{ textDecoration: 'none' }}
+                        sx={styles.linkWrapper}
                     >
-                        <Fab
-                            color="secondary"
-                            aria-label="hire-me"
-                            sx={{
-                                width: { xs: 50, md: 60 },
-                                height: { xs: 50, md: 60 },
-                                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-                                boxShadow: '0 8px 16px rgba(33, 150, 243, 0.3)',
-                                '&:hover': {
-                                    boxShadow: '0 12px 20px rgba(33, 150, 243, 0.4)',
-                                },
-                            }}
-                        >
+                        <Fab color="secondary" aria-label="hire-me" sx={styles.hireMeFab}>
                             <motion.div
                                 animate={{
                                     rotate: [0, 10, -10, 10, 0],
@@ -72,24 +51,9 @@ const FloatingActions = () => {
                         component="a"
                         href="/resume.pdf"
                         download="Aditya_Raj_Resume.pdf"
-                        sx={{ textDecoration: 'none' }}
+                        sx={styles.linkWrapper}
                     >
-                        <Fab
-                            aria-label="download-cv"
-                            sx={{
-                                width: { xs: 50, md: 60 },
-                                height: { xs: 50, md: 60 },
-                                bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'white',
-                                color: 'primary.main',
-                                border: '2px solid',
-                                borderColor: 'primary.main',
-                                backdropFilter: 'blur(10px)',
-                                '&:hover': {
-                                    bgcolor: 'primary.main',
-                                    color: 'primary.contrastText',
-                                },
-                            }}
-                        >
+                        <Fab aria-label="download-cv" sx={styles.resumeFab(theme)}>
                             <Download size={24} />
                         </Fab>
                     </Box>

@@ -100,7 +100,11 @@
                 "Yup",
                 "GraphQl"
             ],
-            "link": "https://costimizer.ai/"
+            "link": "https://costimizer.ai/",
+            "stats": {
+                "value": "40k - 50k",
+                "label": "Active Users/Weekly"
+            }
         },
         {
             "title": "DigiLawyer AI",
@@ -117,7 +121,11 @@
                 "AI",
                 "GraphQl"
             ],
-            "link": "https://digilawyer.ai/"
+            "link": "https://digilawyer.ai/",
+            "stats": {
+                "value": "60k - 80k",
+                "label": "Active Users/Weekly"
+            }
         },
         {
             "title": "FrankieOne One-SDK",
@@ -132,7 +140,11 @@
                 "React",
                 "Redux",
                 "SDK"
-            ]
+            ],
+            "stats": {
+                "value": "4500+",
+                "label": "Weekly Downloads"
+            }
         },
         {
             "title": "FrankieOne Portal",
@@ -150,7 +162,11 @@
                 "SQL",
                 "TanStack Query",
                 "Playwright"
-            ]
+            ],
+            "stats": {
+                "value": "0.5k - 1k",
+                "label": "Concurrent Users"
+            }
         }
     ],
     "testimonials": [
@@ -234,6 +250,16 @@
                 "A11y",
                 "Colors",
                 "Compliance"
+            ]
+        },
+        {
+            "title": "Human-Centric AI Workflow",
+            "description": "Beyond code generation, I employ a critical human-in-the-loop approach. I refine AI prompts for precision and rigorously review all outputs to ensure security, maintainability, and architectural integrity.",
+            "category": "Engineering Standards",
+            "tags": [
+                "Prompt Engineering",
+                "Code Review",
+                "Quality Assurance"
             ]
         }
     ]

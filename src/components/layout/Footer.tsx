@@ -1,12 +1,13 @@
 import { Box, Container, Typography, Stack, IconButton, Divider } from '@mui/material';
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { styles } from './Footer.styles';
 
 const Footer = () => {
     return (
-        <Box sx={{ py: 10, bgcolor: 'background.default', borderTop: '1px solid', borderColor: 'divider' }}>
+        <Box sx={styles.container}>
             <Container maxWidth="lg">
                 <Stack spacing={4} alignItems="center">
-                    <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: -1, fontFamily: 'Outfit' }}>
+                    <Typography variant="h5" sx={styles.logo}>
                         ADITYA<span style={{ color: '#666' }}>.</span>
                     </Typography>
 
@@ -37,7 +38,7 @@ const Footer = () => {
                         </IconButton>
                     </Stack>
 
-                    <Divider sx={{ width: '100%', maxWidth: '600px', opacity: 0.5 }} />
+                    <Divider sx={styles.divider} />
 
                     <Typography variant="body2" color="text.secondary">
                         © {new Date().getFullYear()} Designed & Built by Aditya Raj. All rights reserved.

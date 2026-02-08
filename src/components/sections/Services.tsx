@@ -1,7 +1,7 @@
 import { Box, Container, Typography, Grid, Paper, Stack, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Layers, Monitor, Database, Cloud, Download } from 'lucide-react';
-
+import { styles } from './Services.styles';
 import content from '../../data/content.json';
 
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -13,7 +13,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
 
 const Services = () => {
     return (
-        <Box id="services" sx={{ py: 15, bgcolor: 'background.default' }}>
+        <Box id="services" sx={styles.container}>
             <Container maxWidth="lg">
                 <Grid container spacing={8} alignItems="center">
                     {/* Left Side: Header and Description */}
@@ -24,10 +24,10 @@ const Services = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <Typography variant="h2" sx={{ fontWeight: 800, mb: 4, fontSize: { xs: '3rem', md: '4rem' } }}>
+                            <Typography variant="h2" sx={styles.sectionTitle}>
                                 Services
                             </Typography>
-                            <Typography variant="h6" color="text.secondary" sx={{ mb: 6, lineHeight: 1.6, fontWeight: 400 }}>
+                            <Typography variant="h6" color="text.secondary" sx={styles.sectionDescription}>
                                 We provide end-to-end development services, specializing in front-end and back-end development,
                                 as well as DevOps solutions. Our expertise includes React, Next.js, Node.js, databases, and cloud deployments.
                             </Typography>
@@ -36,7 +36,7 @@ const Services = () => {
                                 <Button
                                     variant="contained"
                                     size="large"
-                                    sx={{ py: 2, px: 4, borderRadius: 2, fontWeight: 700 }}
+                                    sx={styles.primaryButton}
                                     href='https://www.linkedin.com/in/aditya-raj-9b2165227/'
                                     target="_blank"
                                 >
@@ -49,7 +49,7 @@ const Services = () => {
                                     component="a"
                                     href="/resume.pdf"
                                     download="Aditya_Raj_Resume.pdf"
-                                    sx={{ py: 2, px: 4, borderRadius: 2, fontWeight: 700 }}
+                                    sx={styles.secondaryButton}
                                 >
                                     Download Resume
                                 </Button>
@@ -88,31 +88,14 @@ const Services = () => {
                                             }
                                         }}
                                     >
-                                        <Paper
-                                            elevation={0}
-                                            sx={{
-                                                p: 4,
-                                                height: '100%',
-                                                bgcolor: 'rgba(255, 255, 255, 0.03)',
-                                                border: '1px solid',
-                                                borderColor: 'divider',
-                                                borderRadius: 4,
-                                                transition: 'all 0.3s ease',
-                                                '&:hover': {
-                                                    bgcolor: 'rgba(255, 255, 255, 0.05)',
-                                                    transform: 'translateY(-5px)',
-                                                    borderColor: 'primary.main',
-                                                    boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)'
-                                                }
-                                            }}
-                                        >
-                                            <Box sx={{ color: 'primary.main', mb: 3 }}>
+                                        <Paper elevation={0} sx={styles.serviceCard}>
+                                            <Box sx={styles.serviceIcon}>
                                                 {iconMap[service.icon]}
                                             </Box>
-                                            <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                                            <Typography variant="h5" sx={styles.serviceTitle}>
                                                 {service.title}
                                             </Typography>
-                                            <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                                            <Typography variant="body2" color="text.secondary" sx={styles.serviceDescription}>
                                                 {service.description}
                                             </Typography>
                                         </Paper>

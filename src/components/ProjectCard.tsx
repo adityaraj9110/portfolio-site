@@ -1,8 +1,9 @@
 import { Box, Typography, Card, CardContent, CardMedia, Button, Stack, Chip, useTheme } from '@mui/material';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Activity } from 'lucide-react';
 import { useRef } from 'react';
+import { styles } from './ProjectCard.styles';
 
-// Helper to resolve images (copied from original Projects.tsx)
+// Helper to resolve images
 import { publicImages } from '../assets';
 const getImage = (imagePath: string) => {
     if (imagePath.startsWith('http') || imagePath.startsWith('/')) {
@@ -28,6 +29,10 @@ interface Project {
     categories: string[];
     link?: string;
     github?: string;
+    stats?: {
+        value: string;
+        label: string;
+    };
 }
 
 interface ProjectCardProps {
@@ -48,120 +53,79 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         e.stopPropagation();
     };
 
-    // Animation for stacking effect
-    // We can use useScroll to create a parallax or scale effect as it scrolls
-
     return (
         <Card
             elevation={0}
             ref={cardRef}
             onClick={handleCardClick}
-            sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                borderRadius: 1.5,
-                border: '1px solid',
-                borderColor: 'divider',
-                bgcolor: 'background.paper',
-                transition: 'all 0.3s ease',
-                cursor: project.link ? 'pointer' : 'default',
-                '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: theme.shadows[8],
-                    borderColor: 'primary.main'
-                }
-            }}
+            sx={styles.card(theme, !!project.link)}
         >
             {/* Image Section */}
-            <Box sx={{
-                width: '100%',
-                height: '240px',
-                position: 'relative',
-                overflow: 'hidden',
-                bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'grey.100'
-            }}>
+            <Box sx={styles.imageContainer(theme)}>
                 <CardMedia
+                    className="project-image"
                     component="img"
                     image={getImage(project.image)}
                     alt={project.title}
-                    sx={{
-                        height: '100%',
-                        width: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.5s ease',
-                        '&:hover': { transform: 'scale(1.05)' }
-                    }}
+                    sx={styles.cardMedia}
                 />
-                <Stack
-                    direction="row"
-                    spacing={1}
-                    sx={{
-                        position: 'absolute',
-                        top: 16,
-                        right: 16,
-                        zIndex: 2
-                    }}
-                >
+
+                {/* Categories Overlay */}
+                <Stack direction="row" spacing={1} sx={styles.categoryOverlay}>
                     {project.categories.slice(0, 1).map((cat: string) => (
                         <Chip
                             key={cat}
                             label={cat}
                             size="small"
-                            sx={{
-                                bgcolor: 'rgba(0,0,0,0.7)',
-                                color: 'white',
-                                backdropFilter: 'blur(4px)',
-                                fontWeight: 600,
-                                border: '1px solid rgba(255,255,255,0.2)'
-                            }}
+                            sx={styles.categoryChip}
                         />
                     ))}
                 </Stack>
             </Box>
 
             {/* Content Section */}
-            <CardContent sx={{
-                p: 3,
-                flexGrow: 1,
-                display: 'flex',
-                flexDirection: 'column'
-            }}>
-                <Typography variant="h5" fontWeight={700} sx={{ mb: 1.5 }}>
-                    {project.title}
-                </Typography>
+            <CardContent sx={styles.cardContent}>
+                <Box>
+                    <Typography variant="h5" fontWeight={700} gutterBottom>
+                        {project.title}
+                    </Typography>
 
-                <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{
-                        mb: 3,
-                        flexGrow: 1,
-                        lineHeight: 1.6,
-                        // Line clamping for consistent height
-                        display: '-webkit-box',
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                    }}
-                >
-                    {project.description}
-                </Typography>
+                    {/* Stats Section */}
+                    {project.stats && (
+                        <Box sx={styles.statsContainer(theme)}>
+                            <Box sx={styles.statsIconBox}>
+                                <Activity size={20} />
+                            </Box>
+                            <Box>
+                                <Typography
+                                    component="span"
+                                    variant="h3"
+                                    fontWeight={800}
+                                    color="primary"
+                                    sx={styles.statsValue}
+                                >
+                                    {project.stats.value}
+                                </Typography>
+                                <Typography variant="caption" display="block" color="text.secondary" fontWeight={500}>
+                                    {project.stats.label}
+                                </Typography>
+                            </Box>
+                        </Box>
+                    )}
 
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.8, mb: 3 }}>
-                    {project.tags.slice(0, 4).map((tag: string) => ( // Limit tags to 4
+                    <Typography variant="body2" color="text.secondary" sx={styles.description}>
+                        {project.description}
+                    </Typography>
+                </Box>
+
+                <Box sx={styles.tagsContainer}>
+                    {project.tags.slice(0, 4).map((tag: string) => (
                         <Chip
                             key={tag}
                             label={tag}
                             size="small"
                             variant="outlined"
-                            sx={{
-                                borderRadius: 1,
-                                fontSize: '0.75rem',
-                                height: 24,
-                                borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'
-                            }}
+                            sx={styles.tagChip(theme)}
                         />
                     ))}
                     {project.tags.length > 4 && (
@@ -169,36 +133,36 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             label={`+${project.tags.length - 4}`}
                             size="small"
                             variant="outlined"
-                            sx={{ fontSize: '0.75rem', height: 24 }}
+                            sx={styles.moreTagsChip}
                         />
                     )}
                 </Box>
 
-                <Stack direction="row" spacing={1.5} sx={{ mt: 'auto' }}>
+                <Stack direction="row" spacing={2}>
                     {project.link && (
                         <Button
                             variant="contained"
-                            size="small"
-                            startIcon={<ExternalLink size={16} />}
+                            fullWidth
+                            startIcon={<ExternalLink size={18} />}
                             component="a"
                             href={project.link}
                             target="_blank"
                             onClick={handleButtonClick}
-                            sx={{ borderRadius: 2, flex: 1 }}
+                            sx={styles.demoButton(theme)}
                         >
-                            Demo
+                            Live Demo
                         </Button>
                     )}
                     {project.github && (
                         <Button
                             variant="outlined"
-                            size="small"
-                            startIcon={<Github size={16} />}
+                            fullWidth
+                            startIcon={<Github size={18} />}
                             component="a"
                             href={project.github}
                             target="_blank"
                             onClick={handleButtonClick}
-                            sx={{ borderRadius: 2, flex: 1 }}
+                            sx={styles.codeButton(theme)}
                         >
                             Code
                         </Button>

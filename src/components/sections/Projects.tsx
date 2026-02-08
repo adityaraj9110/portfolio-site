@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Github } from 'lucide-react';
 import { Button } from '@mui/material';
 import ProjectCard from '../ProjectCard';
+import { styles } from './Projects.styles';
 import content from '../../data/content.json';
 
 const Projects = () => {
@@ -12,7 +13,7 @@ const Projects = () => {
 
     // Extract unique categories
     const categories = useMemo(() => {
-        const allCats = content.projects.flatMap(p => p.categories); // Flatten array of arrays
+        const allCats = content.projects.flatMap(p => p.categories);
         return ['All', ...Array.from(new Set(allCats))];
     }, []);
 
@@ -31,7 +32,7 @@ const Projects = () => {
     };
 
     return (
-        <Box id="projects" sx={{ py: 15, bgcolor: 'background.paper' }}>
+        <Box id="projects" sx={styles.container}>
             <Container maxWidth="lg">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -39,46 +40,21 @@ const Projects = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <Typography variant="h3" gutterBottom align="center" sx={{ mb: 2, fontWeight: 800 }}>
+                    <Typography variant="h3" gutterBottom align="center" sx={styles.sectionTitle}>
                         Selected Projects
                     </Typography>
-                    <Typography variant="h6" align="center" color="text.secondary" sx={{ mb: 6, maxWidth: 600, mx: 'auto' }}>
+                    <Typography variant="h6" align="center" color="text.secondary" sx={styles.sectionSubtitle}>
                         A showcase of my recent work, featuring complex web applications and AI-powered solutions.
                     </Typography>
                 </motion.div>
 
-                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 8 }}>
+                <Box sx={styles.filterContainer}>
                     <ToggleButtonGroup
                         value={selectedCategory}
                         exclusive
                         onChange={handleCategoryChange}
                         aria-label="project category"
-                        sx={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            justifyContent: 'center',
-                            gap: 1,
-                            bgcolor: 'transparent',
-                            '& .MuiToggleButton-root': {
-                                border: '1px solid',
-                                borderColor: 'divider',
-                                borderRadius: '20px !important',
-                                px: 3,
-                                py: 1,
-                                textTransform: 'capitalize',
-                                fontWeight: 600,
-                                color: 'text.secondary',
-                                bgcolor: 'background.default',
-                                '&.Mui-selected': {
-                                    bgcolor: 'primary.main',
-                                    color: theme.palette.getContrastText(theme.palette.primary.main),
-                                    borderColor: 'primary.main',
-                                    '&:hover': {
-                                        bgcolor: 'primary.dark',
-                                    }
-                                }
-                            }
-                        }}
+                        sx={styles.toggleButtonGroup(theme)}
                     >
                         {categories.map((category) => (
                             <ToggleButton key={category} value={category}>
@@ -99,9 +75,7 @@ const Projects = () => {
                                     exit={{ opacity: 0, scale: 0.8 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <ProjectCard
-                                        project={project}
-                                    />
+                                    <ProjectCard project={project} />
                                 </motion.div>
                             </Grid>
                         ))}
@@ -114,7 +88,7 @@ const Projects = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <Box sx={{ mt: 12, textAlign: 'center' }}>
+                    <Box sx={styles.moreProjectsContainer}>
                         <Button
                             variant="outlined"
                             size="large"
@@ -122,14 +96,7 @@ const Projects = () => {
                             component="a"
                             href="https://github.com/adityaraj9110"
                             target="_blank"
-                            sx={{
-                                py: 1.5,
-                                px: 4,
-                                borderRadius: 2,
-                                fontWeight: 600,
-                                textTransform: 'none',
-                                fontSize: '1.1rem'
-                            }}
+                            sx={styles.moreProjectsButton}
                         >
                             Show More Projects
                         </Button>

@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { ColorModeContext } from '../../App';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
+import { styles } from './Navbar.styles';
 
 const Navbar = () => {
     const theme = useTheme();
@@ -14,11 +15,11 @@ const Navbar = () => {
         setMobileOpen(!mobileOpen);
     };
 
-    const navItems = ['About', 'Services', 'Experience', 'Projects'];
+    const navItems = ['Projects', 'Reviews', 'AI-Insights', 'Experience'];
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" sx={{ my: 2, fontWeight: 800, fontFamily: 'Outfit' }}>
+            <Typography variant="h6" sx={styles.drawerTitle}>
                 ADITYA
             </Typography>
             <Divider />
@@ -32,7 +33,7 @@ const Navbar = () => {
                 ))}
             </List>
             <Divider sx={{ my: 1 }} />
-            <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, gap: 1 }}>
+            <Box sx={styles.drawerThemeToggleContainer}>
                 <IconButton onClick={(e) => { e.stopPropagation(); colorMode.toggleColorMode(); }} color="inherit">
                     {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
                 </IconButton>
@@ -41,29 +42,20 @@ const Navbar = () => {
     );
 
     return (
-        <AppBar
-            position="fixed"
-            color="transparent"
-            elevation={0}
-            sx={{
-                backdropFilter: 'blur(20px)',
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                zIndex: theme.zIndex.drawer + 1
-            }}
-        >
+        <AppBar position="fixed" color="transparent" elevation={0} sx={styles.appBar(theme)}>
             <Container maxWidth="lg">
-                <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+                <Toolbar disableGutters sx={styles.toolbar}>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: -1, fontFamily: 'Outfit' }}>
+                        <Typography variant="h6" sx={styles.logo}>
                             ADITYA
                         </Typography>
                     </motion.div>
 
-                    <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2, alignItems: 'center' }}>
+                    <Box sx={styles.desktopNav}>
                         {navItems.map((item, index) => (
                             <motion.div
                                 key={item}
@@ -71,46 +63,49 @@ const Navbar = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                <Button
-                                    color="inherit"
-                                    href={`#${item.toLowerCase()}`}
-                                    sx={{
-                                        fontWeight: 500,
-                                        '&:hover': {
-                                            backgroundColor: 'transparent',
-                                            opacity: 0.7
-                                        }
-                                    }}
-                                >
+                                <Button color="inherit" href={`#${item.toLowerCase()}`} sx={styles.navButton}>
                                     {item}
                                 </Button>
                             </motion.div>
                         ))}
-                        <IconButton onClick={colorMode.toggleColorMode} color="inherit" sx={{ ml: 1 }}>
+                        <IconButton onClick={colorMode.toggleColorMode} color="inherit" sx={styles.themeToggle}>
                             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
                         </IconButton>
-                        <Button
-                            variant="outlined"
-                            color="inherit"
-                            sx={{
-                                ml: 2,
-                                px: 3,
-                                borderColor: 'divider',
-                                '&:hover': {
-                                    borderColor: 'primary.main',
-                                    bgcolor: 'rgba(25, 118, 210, 0.04)'
-                                }
-                            }}
-                            startIcon={<Download />}
-                            component="a"
-                            href="/resume.pdf"
-                            download="Aditya_Raj_Resume.pdf"
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.5 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
-                            Resume
-                        </Button>
+                            <Box sx={styles.resumeButtonOuter}>
+                                {/* Rotating Border */}
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "linear"
+                                    }}
+                                    style={styles.resumeRotatingBorder(theme)}
+                                />
+                                {/* Inner Button */}
+                                <Button
+                                    variant="text"
+                                    color="inherit"
+                                    sx={styles.resumeButtonInner(theme)}
+                                    startIcon={<Download />}
+                                    component="a"
+                                    href="/resume.pdf"
+                                    download="Aditya_Raj_Resume.pdf"
+                                >
+                                    Resume
+                                </Button>
+                            </Box>
+                        </motion.div>
                     </Box>
 
-                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={styles.mobileMenuContainer}>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -128,12 +123,9 @@ const Navbar = () => {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true,
                     }}
-                    sx={{
-                        display: { xs: 'block', md: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
-                    }}
+                    sx={styles.drawer}
                 >
                     {drawer}
                 </Drawer>
