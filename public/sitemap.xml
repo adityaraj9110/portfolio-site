@@ -6,28 +6,43 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://aditya-profile-site.netlify.app/case-studies/digilawyer-lcp-rag</loc>
+    <loc>https://aditya-profile-site.netlify.app/work</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://aditya-profile-site.netlify.app/case-studies/frankieone-caching-mfe</loc>
+    <loc>https://aditya-profile-site.netlify.app/work/digilawyer-lcp-rag</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://aditya-profile-site.netlify.app/case-studies/costimizer-finops-sse</loc>
+    <loc>https://aditya-profile-site.netlify.app/work/frankieone-caching-mfe</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://aditya-profile-site.netlify.app/case-studies/frankieone-one-sdk</loc>
+    <loc>https://aditya-profile-site.netlify.app/work/costimizer-finops-sse</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aditya-profile-site.netlify.app/work/frankieone-one-sdk</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aditya-profile-site.netlify.app/playground</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aditya-profile-site.netlify.app/writing</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aditya-profile-site.netlify.app/about</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

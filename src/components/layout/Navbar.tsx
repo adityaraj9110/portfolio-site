@@ -1,220 +1,302 @@
+import React, { useState, useContext, useEffect } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import {
-    AppBar,
-    Toolbar,
-    Typography,
-    Button,
-    IconButton,
-    Box,
-    Container,
-    Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    Divider,
-    Snackbar,
-    Alert
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Box,
+  Container,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Divider,
+  Chip,
+  useTheme
 } from '@mui/material';
-import { Brightness4, Brightness7, Menu as MenuIcon, Mail, ContentCopy, Check } from '@mui/icons-material';
-import { useContext, useState } from 'react';
+import {
+  Brightness4,
+  Brightness7,
+  Menu as MenuIcon,
+  Search,
+  Mail
+} from '@mui/icons-material';
 import { ColorModeContext } from '../../App';
-import { useTheme } from '@mui/material/styles';
-import { motion } from 'framer-motion';
-import { styles } from './Navbar.styles';
+import CommandPalette from './CommandPalette';
 
-const navItems = [
-    { label: 'Case Studies', href: '#case-studies' },
-    { label: 'Playground', href: '#playground' },
-    { label: 'Writing', href: '#writing' },
-    { label: 'Stack', href: '#tech-stack' },
-    { label: 'Experience', href: '#experience' }
+const navLinks = [
+  { label: 'Work', path: '/work' },
+  { label: 'Playground', path: '/playground' },
+  { label: 'Writing', path: '/writing' },
+  { label: 'About', path: '/about' },
 ];
 
-const Navbar = () => {
-    const theme = useTheme();
-    const colorMode = useContext(ColorModeContext);
-    const [mobileOpen, setMobileOpen] = useState(false);
-    const [copiedEmail, setCopiedEmail] = useState(false);
+export const Navbar: React.FC = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+  const colorMode = useContext(ColorModeContext);
+  const location = useLocation();
 
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [commandOpen, setCommandOpen] = useState(false);
+
+  // Keyboard shortcut listener for ⌘K / Ctrl+K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setCommandOpen((prev) => !prev);
+      }
     };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
-    const handleCopyEmail = () => {
-        navigator.clipboard.writeText('adityasrivastav0853@gmail.com');
-        setCopiedEmail(true);
-    };
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
-    const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', p: 2 }}>
-            <Typography variant="h6" sx={{ ...styles.drawerTitle, fontWeight: 800, letterSpacing: 1 }}>
-                ADITYA RAJ
-            </Typography>
-            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 2 }}>
-                Frontend &amp; AI-Native Full Stack
-            </Typography>
-            <Divider sx={{ mb: 2 }} />
-            <List>
-                {navItems.map((item) => (
-                    <ListItem key={item.label} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center', borderRadius: 2 }} component="a" href={item.href}>
-                            <ListItemText primary={item.label} primaryTypographyProps={{ fontWeight: 600 }} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider sx={{ my: 2 }} />
-            <Button
-                variant="contained"
-                fullWidth
-                startIcon={<Mail />}
-                component="a"
-                href="mailto:adityasrivastav0853@gmail.com"
-                sx={{ mb: 1.5, fontWeight: 700 }}
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', p: 3 }}>
+      <Typography
+        component={RouterLink}
+        to="/"
+        variant="h6"
+        sx={{
+          fontWeight: 800,
+          textDecoration: 'none',
+          color: 'text.primary',
+          letterSpacing: '-0.02em',
+          display: 'block',
+          mb: 0.5
+        }}
+      >
+        ADITYA RAJ
+      </Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 2 }}>
+        Frontend &amp; AI-Native Full Stack
+      </Typography>
+      <Divider sx={{ mb: 2 }} />
+
+      <List>
+        <ListItem disablePadding>
+          <ListItemButton
+            component={RouterLink}
+            to="/"
+            selected={location.pathname === '/'}
+            sx={{ textAlign: 'center', borderRadius: 1.5 }}
+          >
+            <ListItemText primary="Home" primaryTypographyProps={{ fontWeight: 600 }} />
+          </ListItemButton>
+        </ListItem>
+        {navLinks.map((link) => (
+          <ListItem key={link.path} disablePadding>
+            <ListItemButton
+              component={RouterLink}
+              to={link.path}
+              selected={location.pathname.startsWith(link.path)}
+              sx={{ textAlign: 'center', borderRadius: 1.5 }}
             >
-                Get in Touch
-            </Button>
-            <Button
-                variant="outlined"
-                fullWidth
-                size="small"
-                startIcon={copiedEmail ? <Check sx={{ color: '#10B981' }} /> : <ContentCopy />}
-                onClick={(e) => {
-                    e.stopPropagation();
-                    handleCopyEmail();
-                }}
-                sx={{ mb: 2, fontWeight: 600, textTransform: 'none' }}
+              <ListItemText primary={link.label} primaryTypographyProps={{ fontWeight: 600 }} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      <Divider sx={{ my: 2 }} />
+
+      <Button
+        variant="outlined"
+        fullWidth
+        startIcon={<Search sx={{ fontSize: 18 }} />}
+        onClick={(e) => {
+          e.stopPropagation();
+          setCommandOpen(true);
+        }}
+        sx={{
+          mb: 1.5,
+          fontWeight: 600,
+          fontSize: '0.85rem',
+          borderColor: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'
+        }}
+      >
+        Command Menu (⌘K)
+      </Button>
+
+      <Button
+        variant="contained"
+        fullWidth
+        component="a"
+        href="mailto:adityasrivastav0853@gmail.com"
+        startIcon={<Mail sx={{ fontSize: 18 }} />}
+        sx={{ fontWeight: 600, fontSize: '0.85rem' }}
+      >
+        Contact Aditya
+      </Button>
+    </Box>
+  );
+
+  return (
+    <>
+      <AppBar
+        position="fixed"
+        color="transparent"
+        elevation={0}
+        sx={{
+          bgcolor: isDark ? 'rgba(12, 12, 13, 0.85)' : 'rgba(250, 250, 249, 0.85)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid',
+          borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Toolbar disableGutters sx={{ minHeight: 64, display: 'flex', justifyContent: 'space-between' }}>
+            {/* Logo */}
+            <Typography
+              component={RouterLink}
+              to="/"
+              variant="h6"
+              sx={{
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                textDecoration: 'none',
+                color: 'text.primary',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.5
+              }}
             >
-                {copiedEmail ? 'Copied!' : 'Copy Email'}
-            </Button>
-            <Box sx={styles.drawerThemeToggleContainer}>
-                <IconButton onClick={(e) => { e.stopPropagation(); colorMode.toggleColorMode(); }} color="inherit">
-                    {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-                </IconButton>
-            </Box>
-        </Box>
-    );
+              ADITYA RAJ
+            </Typography>
 
-    return (
-        <AppBar position="fixed" color="transparent" elevation={0} sx={styles.appBar(theme)}>
-            <Container maxWidth="lg">
-                <Toolbar disableGutters sx={styles.toolbar}>
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <Typography
-                            variant="h6"
-                            component="a"
-                            href="#hero"
-                            sx={{
-                                ...styles.logo,
-                                textDecoration: 'none',
-                                color: 'inherit',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: 0.5,
-                                fontWeight: 900
-                            }}
-                        >
-                            ADITYA<span style={{ color: theme.palette.primary.main }}>.</span>
-                        </Typography>
-                    </motion.div>
-
-                    <Box sx={styles.desktopNav}>
-                        {navItems.map((item, index) => (
-                            <motion.div
-                                key={item.label}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: index * 0.08 }}
-                            >
-                                <Button
-                                    color="inherit"
-                                    href={item.href}
-                                    sx={{
-                                        ...styles.navButton,
-                                        fontWeight: 600,
-                                        fontSize: '0.9rem'
-                                    }}
-                                >
-                                    {item.label}
-                                </Button>
-                            </motion.div>
-                        ))}
-
-                        <IconButton onClick={colorMode.toggleColorMode} color="inherit" sx={styles.themeToggle} aria-label="toggle light/dark theme">
-                            {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-                        </IconButton>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4, duration: 0.4 }}
-                            whileHover={{ scale: 1.04 }}
-                            whileTap={{ scale: 0.96 }}
-                        >
-                            {/* HR-Safe Get In Touch / Connect Button */}
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                startIcon={<Mail />}
-                                component="a"
-                                href="mailto:adityasrivastav0853@gmail.com"
-                                sx={{
-                                    fontWeight: 700,
-                                    borderRadius: 2.5,
-                                    px: 2.5,
-                                    py: 0.9,
-                                    textTransform: 'none',
-                                    fontSize: '0.88rem'
-                                }}
-                            >
-                                Get in Touch
-                            </Button>
-                        </motion.div>
-                    </Box>
-
-                    <Box sx={styles.mobileMenuContainer}>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    </Box>
-                </Toolbar>
-            </Container>
-
-            <Box component="nav">
-                <Drawer
-                    variant="temporary"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    ModalProps={{
-                        keepMounted: true,
+            {/* Desktop Navigation */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path || location.pathname.startsWith(link.path + '/');
+                return (
+                  <Button
+                    key={link.path}
+                    component={RouterLink}
+                    to={link.path}
+                    sx={{
+                      color: isActive ? 'text.primary' : 'text.secondary',
+                      fontWeight: isActive ? 700 : 500,
+                      fontSize: '0.88rem',
+                      px: 1.5,
+                      py: 0.8,
+                      borderRadius: 1.5,
+                      '&:hover': {
+                        color: 'text.primary',
+                        bgcolor: isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.03)',
+                      }
                     }}
-                    sx={styles.drawer}
-                >
-                    {drawer}
-                </Drawer>
+                  >
+                    {link.label}
+                  </Button>
+                );
+              })}
+
+              {/* ⌘K Trigger Button */}
+              <Box
+                onClick={() => setCommandOpen(true)}
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  px: 1.5,
+                  py: 0.6,
+                  ml: 1,
+                  cursor: 'pointer',
+                  borderRadius: 1.5,
+                  border: '1px solid',
+                  borderColor: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.12)',
+                  color: 'text.secondary',
+                  transition: 'all 150ms ease',
+                  '&:hover': {
+                    borderColor: isDark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
+                    color: 'text.primary'
+                  }
+                }}
+              >
+                <Search sx={{ fontSize: 16 }} />
+                <Typography variant="caption" sx={{ fontFamily: 'monospace', fontSize: '0.75rem' }}>
+                  Search...
+                </Typography>
+                <Chip
+                  label="⌘K"
+                  size="small"
+                  sx={{
+                    height: 18,
+                    fontSize: '0.65rem',
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    bgcolor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)',
+                    color: 'text.primary'
+                  }}
+                />
+              </Box>
+
+              {/* Theme Toggle */}
+              <IconButton
+                onClick={colorMode.toggleColorMode}
+                size="small"
+                aria-label="toggle light/dark theme"
+                sx={{
+                  ml: 0.5,
+                  color: 'text.secondary',
+                  '&:hover': { color: 'text.primary' }
+                }}
+              >
+                {theme.palette.mode === 'dark' ? <Brightness7 fontSize="small" /> : <Brightness4 fontSize="small" />}
+              </IconButton>
             </Box>
 
-            <Snackbar
-                open={copiedEmail}
-                autoHideDuration={3000}
-                onClose={() => setCopiedEmail(false)}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            >
-                <Alert severity="success" sx={{ width: '100%', fontWeight: 600 }}>
-                    Email copied: adityasrivastav0853@gmail.com
-                </Alert>
-            </Snackbar>
-        </AppBar>
-    );
+            {/* Mobile Menu Icon */}
+            <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
+              <IconButton
+                onClick={colorMode.toggleColorMode}
+                size="small"
+                sx={{ color: 'text.secondary' }}
+              >
+                {theme.palette.mode === 'dark' ? <Brightness7 fontSize="small" /> : <Brightness4 fontSize="small" />}
+              </IconButton>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="end"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+        PaperProps={{
+          sx: {
+            width: 280,
+            bgcolor: isDark ? '#0C0C0D' : '#FAFAF9',
+          }
+        }}
+      >
+        {drawer}
+      </Drawer>
+
+      {/* Command Palette Modal */}
+      <CommandPalette open={commandOpen} onClose={() => setCommandOpen(false)} />
+    </>
+  );
 };
 
 export default Navbar;

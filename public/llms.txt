@@ -1,0 +1,24 @@
+# Aditya Raj — Software Engineer (Frontend & AI-Native Full Stack)
+
+> Location: Noida, UP, India
+> Experience: 3 years full-time (Jan 2024 – Present) at Bigoh Notations PVT LTD
+> Contact: adityasrivastav0853@gmail.com
+> GitHub: https://github.com/adityaraj9110
+> LinkedIn: https://www.linkedin.com/in/aditya-raj-9b2165227/
+> Published NPM Package: https://www.npmjs.com/package/@frankieone/one-sdk (4,500+ weekly downloads)
+
+## Core Stack
+- Frontend: React.js, Next.js (SSR/SSG), TypeScript, Redux Toolkit, TanStack Query, Tailwind CSS, Material UI, Micro-Frontends, WCAG Accessibility
+- Backend & AI: Node.js, GraphQL, REST APIs, Server-Sent Events (SSE), RAG Pipelines, Pinecone (Vector DB), Elasticsearch (Hybrid Search), MCP Servers, LLM Tool Calling
+- Quality & Perf: Core Web Vitals (LCP/INP), List Virtualization, Jest, Playwright, GitHub Actions CI/CD
+
+## Production Case Studies
+- DigiLawyer AI (/work/digilawyer-lcp-rag): Reduced LCP from 7.0s to 1.2s (+30% on marketing pages) using Next.js SSR/SSG and code splitting; built grounded RAG legal chatbot (30% → 90%+ accuracy, 40% fewer hallucinations).
+- FrankieOne Portal (/work/frankieone-caching-mfe): Cut redundant API calls by 70% via TanStack Query caching & deduplication; migrated legacy Vue.js KYB flows to React micro-frontends.
+- Costimizer AI (/work/costimizer-finops-sse): Built multi-cloud FinOps dashboards (1,000+ virtualized rows, 40% fewer React re-renders, 45% fewer API calls) and a reusable SSE streaming RAG AI chatbot package.
+- FrankieOne One-SDK (/work/frankieone-one-sdk): Engineered configurable client-side KYC & biometric verification flows with 15+ calendar/date validation rules and automated retry handling (4,500+ weekly npm downloads).
+
+## Recognition & Craft
+- Employee of the Quarter at Bigoh Notations PVT LTD.
+- Mentored 3 junior engineers and conducted 15+ weekly PR code reviews.
+- Education: B.Tech in Computer Science & Engineering from Chandigarh Engineering College (CGPA 8.6/10).

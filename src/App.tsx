@@ -1,108 +1,26 @@
 import { createContext, useMemo, useState, useEffect } from 'react';
-import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
-import { ThemeProvider, CssBaseline, type PaletteMode } from '@mui/material';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { ThemeProvider, CssBaseline, type PaletteMode, Box } from '@mui/material';
 import { theme } from './theme';
 import Navbar from './components/layout/Navbar';
-import Hero from './components/sections/Hero';
-import MetricsStrip from './components/sections/MetricsStrip';
-import CaseStudies from './components/sections/CaseStudies';
-import InteractivePlayground from './components/sections/InteractivePlayground';
-import WritingSection from './components/sections/WritingSection';
-import TechStackMatrix from './components/sections/TechStackMatrix';
-import Experience from './components/sections/Experience';
-import Reviews from './components/sections/Reviews';
-import About from './components/sections/About';
 import Footer from './components/layout/Footer';
-import FloatingActions from './components/layout/FloatingActions';
-import CaseStudyModal, { type CaseStudyData } from './components/sections/CaseStudyModal';
-import ArticleModal, { type ArticleData } from './components/sections/ArticleModal';
-import { motion } from 'framer-motion';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
-import content from './data/content.json';
+import HomePage from './pages/HomePage';
+import WorkIndex from './pages/WorkIndex';
+import CaseStudyDetail from './pages/CaseStudyDetail';
+import PlaygroundPage from './pages/PlaygroundPage';
+import WritingIndex from './pages/WritingIndex';
+import ArticleDetail from './pages/ArticleDetail';
+import AboutPage from './pages/AboutPage';
 
 export const ColorModeContext = createContext({ toggleColorMode: () => { }, mode: 'dark' as PaletteMode });
 
-function PortfolioMain() {
-  useSmoothScroll();
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  // Deep-link modal state
-  const [deepLinkStudy, setDeepLinkStudy] = useState<CaseStudyData | null>(null);
-  const [deepLinkArticle, setDeepLinkArticle] = useState<ArticleData | null>(null);
-
+// Scroll to top on every route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const path = location.pathname;
-    if (path.startsWith('/case-studies/')) {
-      const studyId = path.replace('/case-studies/', '').replace(/\/$/, '');
-      const match = (content.caseStudies as CaseStudyData[]).find((s) => s.id === studyId);
-      if (match) {
-        setDeepLinkStudy(match);
-      }
-    } else if (path.startsWith('/writing/')) {
-      const slug = path.replace('/writing/', '').replace(/\/$/, '');
-      const match = (content.articles as ArticleData[]).find((a) => a.slug === slug);
-      if (match) {
-        setDeepLinkArticle(match);
-      }
-    } else if (path === '/writing') {
-      const writingEl = document.getElementById('writing');
-      if (writingEl) {
-        writingEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location.pathname]);
-
-  const handleCloseStudy = () => {
-    setDeepLinkStudy(null);
-    if (location.pathname.startsWith('/case-studies/')) {
-      navigate('/', { replace: true });
-    }
-  };
-
-  const handleCloseArticle = () => {
-    setDeepLinkArticle(null);
-    if (location.pathname.startsWith('/writing/')) {
-      navigate('/', { replace: true });
-    }
-  };
-
-  return (
-    <div>
-      <Navbar />
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Hero />
-        <MetricsStrip />
-        <CaseStudies />
-        <InteractivePlayground />
-        <WritingSection />
-        <TechStackMatrix />
-        <Experience />
-        <Reviews />
-        <About />
-      </motion.main>
-      <Footer />
-      <FloatingActions />
-
-      {/* Deep Link Case Study Modal */}
-      <CaseStudyModal
-        open={Boolean(deepLinkStudy)}
-        onClose={handleCloseStudy}
-        caseStudy={deepLinkStudy}
-      />
-
-      {/* Deep Link Article Modal */}
-      <ArticleModal
-        open={Boolean(deepLinkArticle)}
-        onClose={handleCloseArticle}
-        article={deepLinkArticle}
-      />
-    </div>
-  );
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
 }
 
 function App() {
@@ -123,7 +41,25 @@ function App() {
       <ColorModeContext.Provider value={{ ...colorMode, mode }}>
         <ThemeProvider theme={currentTheme}>
           <CssBaseline />
-          <PortfolioMain />
+          <ScrollToTop />
+          <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
+            <Navbar />
+            <Box component="main" sx={{ flex: 1 }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/work" element={<WorkIndex />} />
+                <Route path="/work/:slug" element={<CaseStudyDetail />} />
+                {/* Legacy route alias */}
+                <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+                <Route path="/playground" element={<PlaygroundPage />} />
+                <Route path="/writing" element={<WritingIndex />} />
+                <Route path="/writing/:slug" element={<ArticleDetail />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Box>
+            <Footer />
+          </Box>
         </ThemeProvider>
       </ColorModeContext.Provider>
     </BrowserRouter>

@@ -43,7 +43,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
     <!-- JSON-LD Structured Data (Entity Disambiguation for Google Knowledge Graph) -->
     <script type="application/ld+json">
@@ -91,17 +91,18 @@
     </script>
   </head>
   <body>
-    <!-- Fallback crawlable semantic HTML for search engine bots (Googlebot, Bingbot, scrapers) -->
+    <!-- Fallback crawlable semantic HTML for search engine bots (Googlebot, Bingbot, LLMs) -->
     <div id="root">
       <header>
         <p>Software Engineer • Frontend Architecture &amp; AI-Native Systems</p>
         <h1>Aditya Raj — I build fast React &amp; Next.js SaaS systems that survive real production scale.</h1>
         <p>3 years shipping production web platforms, published npm SDKs, and real-time RAG/SSE AI interfaces across FinTech, RegTech, LegalTech, and FinOps in Noida, UP, India.</p>
         <nav>
-          <a href="#case-studies">Case Studies</a> |
-          <a href="#playground">Interactive Demos</a> |
-          <a href="#writing">Engineering Notes</a> |
-          <a href="#experience">Experience</a> |
+          <a href="/work">Work</a> |
+          <a href="/playground">Playground</a> |
+          <a href="/writing">Writing</a> |
+          <a href="/about">About</a> |
+          <a href="/llms.txt">LLMs.txt</a> |
           <a href="mailto:adityasrivastav0853@gmail.com">Contact</a>
         </nav>
       </header>
@@ -116,21 +117,21 @@
           </ul>
         </section>
         <section aria-label="Featured Engineering Case Studies">
-          <h2>Featured Engineering Case Studies</h2>
+          <h2>Production Case Studies</h2>
           <article>
-            <h3>DigiLawyer AI — Cutting Application LCP from 7.0s to 1.2s &amp; Grounded RAG Legal AI</h3>
+            <h3><a href="/work/digilawyer-lcp-rag">DigiLawyer AI — Cutting Application LCP from 7.0s to 1.2s &amp; Grounded RAG Legal AI</a></h3>
             <p>Next.js, React, TypeScript, GraphQL, SSE, RAG, Material UI. Replaced blocking REST calls with streaming Server-Sent Events, resolved bundle bloat, and achieved 1.2s LCP.</p>
           </article>
           <article>
-            <h3>FrankieOne Compliance Portal — Slashing Redundant API Calls by 70% &amp; Micro-Frontend Migration</h3>
+            <h3><a href="/work/frankieone-caching-mfe">FrankieOne Compliance Portal — Slashing Redundant API Calls by 70% &amp; Micro-Frontend Migration</a></h3>
             <p>React, TypeScript, TanStack Query, Redux, Playwright. Centralized server-state with query deduplication and migrated legacy Vue.js KYB modules into isolated React micro-frontends.</p>
           </article>
           <article>
-            <h3>Costimizer AI — Architecting a Multi-Cloud FinOps Platform &amp; Reusable SSE AI Chatbot</h3>
+            <h3><a href="/work/costimizer-finops-sse">Costimizer AI — Architecting a Multi-Cloud FinOps Platform &amp; Reusable SSE AI Chatbot</a></h3>
             <p>React, TypeScript, Node.js, SSE, Elasticsearch, Pinecone, Material UI. List virtualization for 1,000+ billing rows and buffered SSE token streaming at 60 FPS.</p>
           </article>
           <article>
-            <h3>FrankieOne One-SDK — Engineering @frankieone/one-sdk to 4,500+ Weekly npm Downloads</h3>
+            <h3><a href="/work/frankieone-one-sdk">FrankieOne One-SDK — Engineering @frankieone/one-sdk to 4,500+ Weekly npm Downloads</a></h3>
             <p>React, TypeScript, Redux, React Hook Form. Schema-driven dynamic KYC/IDV form engine with automated retry resilience and 15+ date validation variants.</p>
           </article>
         </section>
@@ -139,11 +140,6 @@
           <p><strong>Frontend:</strong> React.js, Next.js (SSR/SSG), TypeScript, Redux Toolkit, TanStack Query, React Hook Form, Material UI, Tailwind CSS, Micro-Frontends, WCAG AA.</p>
           <p><strong>AI &amp; Backend:</strong> Node.js, GraphQL, REST APIs, Server-Sent Events (SSE), RAG Pipelines, Pinecone, Elasticsearch, MCP Servers.</p>
           <p><strong>Testing &amp; CI/CD:</strong> Core Web Vitals, Jest, Playwright, GitHub Actions, Vite, Webpack.</p>
-        </section>
-        <section aria-label="Experience">
-          <h2>Experience</h2>
-          <p><strong>Software Engineer — Bigoh Notations PVT LTD</strong> (Jan 2024 – Present | Noida, UP). Employee of the Quarter. Mentored 3 junior engineers, 15+ weekly PR code reviews.</p>
-          <p><strong>B.Tech</strong> — Chandigarh Engineering College, Landran (CGPA: 8.6, 2020 – 2024).</p>
         </section>
       </main>
       <footer>

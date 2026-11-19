@@ -1,139 +1,165 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import {
-    Box,
-    Container,
-    Typography,
-    Stack,
-    IconButton,
-    Divider,
-    Button,
-    Tooltip,
-    Snackbar,
-    Alert,
-    useTheme
+  Box,
+  Container,
+  Typography,
+  Stack,
+  Button,
+  Divider,
+  Snackbar,
+  Alert,
+  useTheme
 } from '@mui/material';
-import { Mail, ContentCopy, Check } from '@mui/icons-material';
-import { Github, Linkedin, Package } from 'lucide-react';
-import { styles } from './Footer.styles';
+import { ContentCopy, Check } from '@mui/icons-material';
 
-const Footer = () => {
-    const theme = useTheme();
-    const isDark = theme.palette.mode === 'dark';
-    const [copiedEmail, setCopiedEmail] = useState(false);
+export const Footer: React.FC = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
-    const handleCopyEmail = () => {
-        navigator.clipboard.writeText('adityasrivastav0853@gmail.com');
-        setCopiedEmail(true);
-    };
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('adityasrivastav0853@gmail.com');
+    setCopiedEmail(true);
+  };
 
-    return (
-        <Box sx={{ ...styles.container, py: { xs: 8, md: 10 } }}>
-            <Container maxWidth="md">
-                <Stack spacing={4} alignItems="center" textAlign="center">
-                    <Typography variant="overline" color="primary" sx={{ fontWeight: 800, letterSpacing: 2 }}>
-                        Let's Connect
-                    </Typography>
+  return (
+    <Box
+      component="footer"
+      sx={{
+        py: 8,
+        borderTop: '1px solid',
+        borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+        bgcolor: isDark ? '#0C0C0D' : '#FAFAF9',
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            justifyContent: 'space-between',
+            alignItems: { xs: 'flex-start', md: 'center' },
+            gap: 4,
+            mb: 6
+          }}
+        >
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: '-0.02em', mb: 0.5 }}>
+              Aditya Raj
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Software Engineer • Frontend Architecture &amp; AI-Native Systems
+            </Typography>
+            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5, fontFamily: 'monospace' }}>
+              Noida, Uttar Pradesh, India
+            </Typography>
+          </Box>
 
-                    <Typography
-                        variant="h3"
-                        sx={{
-                            fontWeight: 800,
-                            letterSpacing: '-0.02em',
-                            fontSize: { xs: '1.85rem', md: '2.5rem' },
-                            maxWidth: 700
-                        }}
-                    >
-                        Let's talk frontend architecture, web performance, or AI interfaces.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, lineHeight: 1.7 }}>
-                        Always happy to connect with engineers, founders, and technical leaders building
-                        scalable web products, published developer tools, or AI-native systems.
-                    </Typography>
-
-                    {/* Action buttons */}
-                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 1 }}>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            startIcon={<Mail />}
-                            component="a"
-                            href="mailto:adityasrivastav0853@gmail.com"
-                            sx={{ px: 4, py: 1.3, fontWeight: 700, borderRadius: 2.5 }}
-                        >
-                            adityasrivastav0853@gmail.com
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            size="large"
-                            startIcon={copiedEmail ? <Check sx={{ color: '#10B981' }} /> : <ContentCopy />}
-                            onClick={handleCopyEmail}
-                            sx={{ px: 3, py: 1.3, fontWeight: 600, borderRadius: 2.5, textTransform: 'none' }}
-                        >
-                            {copiedEmail ? 'Email Copied!' : 'Copy Email'}
-                        </Button>
-                    </Stack>
-
-                    {/* Social links row */}
-                    <Stack direction="row" spacing={2} sx={{ pt: 1 }}>
-                        <Tooltip title="GitHub (@adityaraj9110)">
-                            <IconButton
-                                color="inherit"
-                                component="a"
-                                href="https://github.com/adityaraj9110"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                sx={{ bgcolor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)' }}
-                            >
-                                <Github size={20} />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="LinkedIn Profile">
-                            <IconButton
-                                color="inherit"
-                                component="a"
-                                href="https://www.linkedin.com/in/aditya-raj-9b2165227/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                sx={{ bgcolor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)' }}
-                            >
-                                <Linkedin size={20} />
-                            </IconButton>
-                        </Tooltip>
-                        <Tooltip title="@frankieone/one-sdk npm Package">
-                            <IconButton
-                                color="inherit"
-                                component="a"
-                                href="https://www.npmjs.com/package/@frankieone/one-sdk"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                sx={{ bgcolor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)' }}
-                            >
-                                <Package size={20} />
-                            </IconButton>
-                        </Tooltip>
-                    </Stack>
-
-                    <Divider sx={{ ...styles.divider, width: '100%', my: 3 }} />
-
-                    <Typography variant="body2" color="text.secondary">
-                        © {new Date().getFullYear()} Aditya Raj • Software Engineer • Noida, UP, India. Built with React &amp; TypeScript.
-                    </Typography>
-                </Stack>
-            </Container>
-
-            <Snackbar
-                open={copiedEmail}
-                autoHideDuration={3000}
-                onClose={() => setCopiedEmail(false)}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} alignItems={{ xs: 'flex-start', sm: 'center' }}>
+            <Button
+              size="small"
+              variant="outlined"
+              onClick={handleCopyEmail}
+              startIcon={copiedEmail ? <Check sx={{ color: '#10B981', fontSize: 16 }} /> : <ContentCopy sx={{ fontSize: 15 }} />}
+              sx={{
+                fontFamily: 'monospace',
+                fontSize: '0.78rem',
+                borderColor: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
+                color: 'text.primary'
+              }}
             >
-                <Alert severity="success" sx={{ width: '100%', fontWeight: 600 }}>
-                    Email copied: adityasrivastav0853@gmail.com
-                </Alert>
-            </Snackbar>
+              {copiedEmail ? 'Email Copied!' : 'adityasrivastav0853@gmail.com'}
+            </Button>
+            <Button
+              component="a"
+              href="mailto:adityasrivastav0853@gmail.com"
+              size="small"
+              variant="contained"
+              sx={{ fontSize: '0.82rem', fontWeight: 600 }}
+            >
+              Get in Touch
+            </Button>
+          </Stack>
         </Box>
-    );
+
+        <Divider sx={{ mb: 4, borderColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' }} />
+
+        {/* Footer Navigation & Colophon */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            justifyContent: 'space-between',
+            alignItems: { xs: 'flex-start', sm: 'center' },
+            gap: 2
+          }}
+        >
+          <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
+            <Box
+              component={RouterLink}
+              to="/"
+              sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
+            >
+              Home
+            </Box>
+            <Box
+              component={RouterLink}
+              to="/work"
+              sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
+            >
+              Work
+            </Box>
+            <Box
+              component={RouterLink}
+              to="/playground"
+              sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
+            >
+              Playground
+            </Box>
+            <Box
+              component={RouterLink}
+              to="/writing"
+              sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
+            >
+              Writing
+            </Box>
+            <Box
+              component={RouterLink}
+              to="/about"
+              sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
+            >
+              About
+            </Box>
+            <Box
+              component="a"
+              href="/llms.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', fontFamily: 'monospace', '&:hover': { color: 'text.primary' } }}
+            >
+              /llms.txt ↗
+            </Box>
+          </Stack>
+
+          <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'monospace', fontSize: '0.72rem' }}>
+            Built with React, TypeScript &amp; Vite. Typeset in Inter &amp; JetBrains Mono.
+          </Typography>
+        </Box>
+      </Container>
+
+      <Snackbar
+        open={copiedEmail}
+        autoHideDuration={2500}
+        onClose={() => setCopiedEmail(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert severity="success" sx={{ width: '100%', fontWeight: 600 }}>
+          Email copied: adityasrivastav0853@gmail.com
+        </Alert>
+      </Snackbar>
+    </Box>
+  );
 };
 
 export default Footer;
