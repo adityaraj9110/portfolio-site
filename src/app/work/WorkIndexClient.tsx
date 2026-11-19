@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useMemo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -16,10 +18,10 @@ import {
   useTheme
 } from '@mui/material';
 import { ArrowForward, OpenInNew } from '@mui/icons-material';
-import content from '../data/content.json';
-import { AskAiFooter } from '../components/layout/AskAiFooter';
+import content from '../../data/content.json';
+import { AskAiFooter } from '../../components/layout/AskAiFooter';
 
-const WorkIndex = () => {
+export default function WorkIndexClient() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const [filter, setFilter] = useState('All');
@@ -174,8 +176,8 @@ const WorkIndex = () => {
                   </Typography>
 
                   <Typography
-                    component={RouterLink}
-                    to={`/work/${study.id}`}
+                    component={Link}
+                    href={`/work/${study.id}`}
                     variant="h5"
                     sx={{
                       fontWeight: 700,
@@ -224,8 +226,8 @@ const WorkIndex = () => {
                   {/* Buttons */}
                   <Stack direction="row" spacing={1.5}>
                     <Button
-                      component={RouterLink}
-                      to={`/work/${study.id}`}
+                      component={Link}
+                      href={`/work/${study.id}`}
                       variant="contained"
                       fullWidth
                       endIcon={<ArrowForward />}
@@ -259,6 +261,4 @@ const WorkIndex = () => {
       </Container>
     </Box>
   );
-};
-
-export default WorkIndex;
+}

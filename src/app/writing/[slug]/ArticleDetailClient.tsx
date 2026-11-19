@@ -1,4 +1,6 @@
-import { useParams, Link as RouterLink } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -11,11 +13,14 @@ import {
   useTheme
 } from '@mui/material';
 import { ArrowBack, ArrowForward, Visibility } from '@mui/icons-material';
-import content from '../data/content.json';
-import { AskAiFooter } from '../components/layout/AskAiFooter';
+import content from '../../../data/content.json';
+import { AskAiFooter } from '../../../components/layout/AskAiFooter';
 
-const ArticleDetail = () => {
-  const { slug } = useParams<{ slug: string }>();
+interface ArticleDetailClientProps {
+  slug: string;
+}
+
+export default function ArticleDetailClient({ slug }: ArticleDetailClientProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
 
@@ -28,8 +33,8 @@ const ArticleDetail = () => {
         {/* Breadcrumb */}
         <Box sx={{ mb: 4 }}>
           <Button
-            component={RouterLink}
-            to="/writing"
+            component={Link}
+            href="/writing"
             startIcon={<ArrowBack />}
             sx={{
               color: 'text.secondary',
@@ -193,8 +198,8 @@ const ArticleDetail = () => {
 
           {/* Related Case Studies button */}
           <Button
-            component={RouterLink}
-            to="/work"
+            component={Link}
+            href="/work"
             variant="outlined"
             endIcon={<ArrowForward />}
             sx={{ fontWeight: 600, mb: 6 }}
@@ -208,6 +213,4 @@ const ArticleDetail = () => {
       </Container>
     </Box>
   );
-};
-
-export default ArticleDetail;
+}

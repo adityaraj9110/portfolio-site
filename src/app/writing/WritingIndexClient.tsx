@@ -1,4 +1,6 @@
-import { Link as RouterLink } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -12,10 +14,10 @@ import {
   useTheme
 } from '@mui/material';
 import { ArrowForward, Article, Visibility } from '@mui/icons-material';
-import content from '../data/content.json';
-import { AskAiFooter } from '../components/layout/AskAiFooter';
+import content from '../../data/content.json';
+import { AskAiFooter } from '../../components/layout/AskAiFooter';
 
-const WritingIndex = () => {
+export default function WritingIndexClient() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
 
@@ -88,8 +90,8 @@ const WritingIndex = () => {
                   </Box>
 
                   <Typography
-                    component={RouterLink}
-                    to={`/writing/${art.slug}`}
+                    component={Link}
+                    href={`/writing/${art.slug}`}
                     variant="h5"
                     sx={{
                       fontWeight: 700,
@@ -128,8 +130,8 @@ const WritingIndex = () => {
                   </Stack>
 
                   <Button
-                    component={RouterLink}
-                    to={`/writing/${art.slug}`}
+                    component={Link}
+                    href={`/writing/${art.slug}`}
                     variant="outlined"
                     endIcon={<ArrowForward />}
                     sx={{
@@ -152,6 +154,4 @@ const WritingIndex = () => {
       </Container>
     </Box>
   );
-};
-
-export default WritingIndex;
+}

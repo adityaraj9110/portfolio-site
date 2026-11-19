@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useContext, useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   AppBar,
   Toolbar,
@@ -24,7 +27,7 @@ import {
   Search,
   Mail
 } from '@mui/icons-material';
-import { ColorModeContext } from '../../App';
+import { ColorModeContext } from '../../app/providers';
 import CommandPalette from './CommandPalette';
 
 const navLinks = [
@@ -38,7 +41,7 @@ export const Navbar: React.FC = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const colorMode = useContext(ColorModeContext);
-  const location = useLocation();
+  const pathname = usePathname() || '';
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
@@ -62,8 +65,8 @@ export const Navbar: React.FC = () => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', p: 3 }}>
       <Typography
-        component={RouterLink}
-        to="/"
+        component={Link}
+        href="/"
         variant="h6"
         sx={{
           fontWeight: 800,
@@ -84,9 +87,9 @@ export const Navbar: React.FC = () => {
       <List>
         <ListItem disablePadding>
           <ListItemButton
-            component={RouterLink}
-            to="/"
-            selected={location.pathname === '/'}
+            component={Link}
+            href="/"
+            selected={pathname === '/'}
             sx={{ textAlign: 'center', borderRadius: 1.5 }}
           >
             <ListItemText primary="Home" primaryTypographyProps={{ fontWeight: 600 }} />
@@ -95,9 +98,9 @@ export const Navbar: React.FC = () => {
         {navLinks.map((link) => (
           <ListItem key={link.path} disablePadding>
             <ListItemButton
-              component={RouterLink}
-              to={link.path}
-              selected={location.pathname.startsWith(link.path)}
+              component={Link}
+              href={link.path}
+              selected={pathname.startsWith(link.path)}
               sx={{ textAlign: 'center', borderRadius: 1.5 }}
             >
               <ListItemText primary={link.label} primaryTypographyProps={{ fontWeight: 600 }} />
@@ -157,8 +160,8 @@ export const Navbar: React.FC = () => {
           <Toolbar disableGutters sx={{ minHeight: 64, display: 'flex', justifyContent: 'space-between' }}>
             {/* Logo */}
             <Typography
-              component={RouterLink}
-              to="/"
+              component={Link}
+              href="/"
               variant="h6"
               sx={{
                 fontWeight: 800,
@@ -176,12 +179,12 @@ export const Navbar: React.FC = () => {
             {/* Desktop Navigation */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
               {navLinks.map((link) => {
-                const isActive = location.pathname === link.path || location.pathname.startsWith(link.path + '/');
+                const isActive = pathname === link.path || pathname.startsWith(link.path + '/');
                 return (
                   <Button
                     key={link.path}
-                    component={RouterLink}
-                    to={link.path}
+                    component={Link}
+                    href={link.path}
                     sx={{
                       color: isActive ? 'text.primary' : 'text.secondary',
                       fontWeight: isActive ? 700 : 500,

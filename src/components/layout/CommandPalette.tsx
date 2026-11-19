@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import {
   Dialog,
   DialogContent,
@@ -37,13 +39,12 @@ interface CommandItem {
   category: 'Navigation' | 'Case Studies' | 'Actions';
   icon: React.ReactNode;
   action: () => void;
-  shortcut?: string;
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
-  const navigate = useNavigate();
+  const router = useRouter();
   const [query, setQuery] = useState('');
 
   const commands: CommandItem[] = [
@@ -52,35 +53,35 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
       label: 'Home',
       category: 'Navigation',
       icon: <Home fontSize="small" />,
-      action: () => { navigate('/'); onClose(); }
+      action: () => { router.push('/'); onClose(); }
     },
     {
       id: 'work',
       label: 'Work (All Case Studies)',
       category: 'Navigation',
       icon: <Work fontSize="small" />,
-      action: () => { navigate('/work'); onClose(); }
+      action: () => { router.push('/work'); onClose(); }
     },
     {
       id: 'playground',
       label: 'Interactive Systems Playground',
       category: 'Navigation',
       icon: <Science fontSize="small" />,
-      action: () => { navigate('/playground'); onClose(); }
+      action: () => { router.push('/playground'); onClose(); }
     },
     {
       id: 'writing',
       label: 'Writing & Engineering Notes',
       category: 'Navigation',
       icon: <Article fontSize="small" />,
-      action: () => { navigate('/writing'); onClose(); }
+      action: () => { router.push('/writing'); onClose(); }
     },
     {
       id: 'about',
       label: 'About & Career Philosophy',
       category: 'Navigation',
       icon: <Person fontSize="small" />,
-      action: () => { navigate('/about'); onClose(); }
+      action: () => { router.push('/about'); onClose(); }
     },
     // Case studies
     {
@@ -88,28 +89,28 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
       label: 'Case Study: DigiLawyer AI (LCP 7s → 1.2s & RAG)',
       category: 'Case Studies',
       icon: <Work fontSize="small" />,
-      action: () => { navigate('/work/digilawyer-lcp-rag'); onClose(); }
+      action: () => { router.push('/work/digilawyer-lcp-rag'); onClose(); }
     },
     {
       id: 'case-frankieone',
       label: 'Case Study: FrankieOne Portal (70% Fewer API Calls)',
       category: 'Case Studies',
       icon: <Work fontSize="small" />,
-      action: () => { navigate('/work/frankieone-caching-mfe'); onClose(); }
+      action: () => { router.push('/work/frankieone-caching-mfe'); onClose(); }
     },
     {
       id: 'case-costimizer',
       label: 'Case Study: Costimizer AI (1,000+ Row FinOps & SSE)',
       category: 'Case Studies',
       icon: <Work fontSize="small" />,
-      action: () => { navigate('/work/costimizer-finops-sse'); onClose(); }
+      action: () => { router.push('/work/costimizer-finops-sse'); onClose(); }
     },
     {
       id: 'case-one-sdk',
       label: 'Case Study: FrankieOne One-SDK (4.5k+ Weekly npm)',
       category: 'Case Studies',
       icon: <Work fontSize="small" />,
-      action: () => { navigate('/work/frankieone-one-sdk'); onClose(); }
+      action: () => { router.push('/work/frankieone-one-sdk'); onClose(); }
     },
     // Actions
     {

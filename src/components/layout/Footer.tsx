@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -97,36 +99,36 @@ export const Footer: React.FC = () => {
         >
           <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
             <Box
-              component={RouterLink}
-              to="/"
+              component={Link}
+              href="/"
               sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
             >
               Home
             </Box>
             <Box
-              component={RouterLink}
-              to="/work"
+              component={Link}
+              href="/work"
               sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
             >
               Work
             </Box>
             <Box
-              component={RouterLink}
-              to="/playground"
+              component={Link}
+              href="/playground"
               sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
             >
               Playground
             </Box>
             <Box
-              component={RouterLink}
-              to="/writing"
+              component={Link}
+              href="/writing"
               sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
             >
               Writing
             </Box>
             <Box
-              component={RouterLink}
-              to="/about"
+              component={Link}
+              href="/about"
               sx={{ color: 'text.secondary', fontSize: '0.82rem', textDecoration: 'none', '&:hover': { color: 'text.primary' } }}
             >
               About
@@ -143,7 +145,7 @@ export const Footer: React.FC = () => {
           </Stack>
 
           <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'monospace', fontSize: '0.72rem' }}>
-            Built with React, TypeScript &amp; Vite. Typeset in Inter &amp; JetBrains Mono.
+            Built with Next.js, React &amp; TypeScript. Typeset in Inter &amp; JetBrains Mono.
           </Typography>
         </Box>
       </Container>

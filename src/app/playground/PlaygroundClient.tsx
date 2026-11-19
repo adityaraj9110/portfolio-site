@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect } from 'react';
 import {
   Box,
@@ -24,7 +26,7 @@ import {
   ErrorOutline,
   Code
 } from '@mui/icons-material';
-import { AskAiFooter } from '../components/layout/AskAiFooter';
+import { AskAiFooter } from '../../components/layout/AskAiFooter';
 
 const SAMPLE_TOKENS = [
   "Legal statutory analysis indicates", " that pursuant to Clause 14.2,", " the statutory limitation",
@@ -46,7 +48,7 @@ const MOCK_FINOPS_RESOURCES = Array.from({ length: 1000 }, (_, i) => ({
   savings: (12.5 + (i * 1.8) % 85).toFixed(2)
 }));
 
-const PlaygroundPage = () => {
+export default function PlaygroundClient() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const [currentTab, setCurrentTab] = useState(0);
@@ -715,4 +717,4 @@ const onChunkReceived = (chunk: string) => {
   );
 };
 
-export default PlaygroundPage;
+

@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Container,
@@ -15,9 +17,9 @@ import {
   Business
 } from '@mui/icons-material';
 import { Github, Linkedin } from 'lucide-react';
-import { AskAiFooter } from '../components/layout/AskAiFooter';
+import { AskAiFooter } from '../../components/layout/AskAiFooter';
 
-const AboutPage = () => {
+export default function AboutClient() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
 
@@ -300,6 +302,4 @@ const AboutPage = () => {
       </Container>
     </Box>
   );
-};
-
-export default AboutPage;
+}

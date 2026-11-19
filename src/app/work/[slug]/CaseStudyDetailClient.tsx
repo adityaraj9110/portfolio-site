@@ -1,4 +1,6 @@
-import { useParams, Link as RouterLink } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -18,12 +20,15 @@ import {
   CheckCircle,
   Science
 } from '@mui/icons-material';
-import content from '../data/content.json';
-import ArchitectureDiagram from '../components/work/ArchitectureDiagram';
-import { AskAiFooter } from '../components/layout/AskAiFooter';
+import content from '../../../data/content.json';
+import ArchitectureDiagram from '../../../components/work/ArchitectureDiagram';
+import { AskAiFooter } from '../../../components/layout/AskAiFooter';
 
-const CaseStudyDetail = () => {
-  const { slug } = useParams<{ slug: string }>();
+interface CaseStudyDetailClientProps {
+  slug: string;
+}
+
+export default function CaseStudyDetailClient({ slug }: CaseStudyDetailClientProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
 
@@ -49,8 +54,8 @@ const CaseStudyDetail = () => {
         {/* Top Breadcrumb */}
         <Box sx={{ mb: 4 }}>
           <Button
-            component={RouterLink}
-            to="/work"
+            component={Link}
+            href="/work"
             startIcon={<ArrowBack />}
             sx={{
               color: 'text.secondary',
@@ -341,8 +346,8 @@ const CaseStudyDetail = () => {
                   </Typography>
                 </Box>
                 <Button
-                  component={RouterLink}
-                  to="/playground"
+                  component={Link}
+                  href="/playground"
                   variant="outlined"
                   size="small"
                   startIcon={<Science />}
@@ -358,8 +363,8 @@ const CaseStudyDetail = () => {
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 {prevStudy ? (
                   <Button
-                    component={RouterLink}
-                    to={`/work/${prevStudy.id}`}
+                    component={Link}
+                    href={`/work/${prevStudy.id}`}
                     startIcon={<ArrowBack />}
                     sx={{ textTransform: 'none', fontWeight: 600 }}
                   >
@@ -369,8 +374,8 @@ const CaseStudyDetail = () => {
 
                 {nextStudy ? (
                   <Button
-                    component={RouterLink}
-                    to={`/work/${nextStudy.id}`}
+                    component={Link}
+                    href={`/work/${nextStudy.id}`}
                     endIcon={<ArrowForward />}
                     sx={{ textTransform: 'none', fontWeight: 600 }}
                   >
@@ -458,6 +463,4 @@ const CaseStudyDetail = () => {
       </Container>
     </Box>
   );
-};
-
-export default CaseStudyDetail;
+}

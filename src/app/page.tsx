@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -28,7 +30,7 @@ import { Github, Linkedin } from 'lucide-react';
 import content from '../data/content.json';
 import { AskAiFooter } from '../components/layout/AskAiFooter';
 
-const HomePage = () => {
+export default function HomePage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -98,8 +100,8 @@ const HomePage = () => {
           {/* CTAs */}
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 4 }}>
             <Button
-              component={RouterLink}
-              to="/work"
+              component={Link}
+              href="/work"
               variant="contained"
               size="large"
               endIcon={<ArrowForward />}
@@ -228,8 +230,8 @@ const HomePage = () => {
               </Typography>
             </Box>
             <Button
-              component={RouterLink}
-              to="/work"
+              component={Link}
+              href="/work"
               endIcon={<ArrowForward />}
               sx={{ fontWeight: 600, fontSize: '0.9rem' }}
             >
@@ -298,8 +300,8 @@ const HomePage = () => {
                     </Typography>
 
                     <Typography
-                      component={RouterLink}
-                      to={`/work/${study.id}`}
+                      component={Link}
+                      href={`/work/${study.id}`}
                       variant="h5"
                       sx={{
                         fontWeight: 700,
@@ -319,8 +321,8 @@ const HomePage = () => {
 
                     <Stack direction="row" spacing={1.5}>
                       <Button
-                        component={RouterLink}
-                        to={`/work/${study.id}`}
+                        component={Link}
+                        href={`/work/${study.id}`}
                         variant="contained"
                         fullWidth
                         endIcon={<ArrowForward />}
@@ -380,8 +382,8 @@ const HomePage = () => {
                   test <strong>SSE rAF streaming buffering</strong> with live FPS counters, <strong>TanStack Query request deduplication</strong>, and <strong>1,000+ row table virtualization</strong>.
                 </Typography>
                 <Button
-                  component={RouterLink}
-                  to="/playground"
+                  component={Link}
+                  href="/playground"
                   variant="contained"
                   endIcon={<ArrowForward />}
                   sx={{ fontWeight: 600, px: 3 }}
@@ -434,8 +436,8 @@ const HomePage = () => {
               </Typography>
             </Box>
             <Button
-              component={RouterLink}
-              to="/writing"
+              component={Link}
+              href="/writing"
               endIcon={<ArrowForward />}
               sx={{ fontWeight: 600, fontSize: '0.9rem' }}
             >
@@ -469,8 +471,8 @@ const HomePage = () => {
                   </Box>
 
                   <Typography
-                    component={RouterLink}
-                    to={`/writing/${art.slug}`}
+                    component={Link}
+                    href={`/writing/${art.slug}`}
                     variant="h6"
                     sx={{
                       fontWeight: 700,
@@ -489,8 +491,8 @@ const HomePage = () => {
                   </Typography>
 
                   <Button
-                    component={RouterLink}
-                    to={`/writing/${art.slug}`}
+                    component={Link}
+                    href={`/writing/${art.slug}`}
                     size="small"
                     endIcon={<ArrowForward sx={{ fontSize: 14 }} />}
                     sx={{ alignSelf: 'flex-start', fontWeight: 600, p: 0 }}
@@ -578,6 +580,4 @@ const HomePage = () => {
       </Container>
     </Box>
   );
-};
-
-export default HomePage;
+}
