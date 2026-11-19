@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Grid, Paper, Stack, Button } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Layers, Monitor, Database, Cloud, Download } from 'lucide-react';
+import { Layers, Monitor, Database, Cloud } from 'lucide-react';
 import { styles } from './Services.styles';
 import content from '../../data/content.json';
 
@@ -45,13 +45,11 @@ const Services = () => {
                                 <Button
                                     variant="outlined"
                                     size="large"
-                                    startIcon={<Download size={20} />}
                                     component="a"
-                                    href="/resume.pdf"
-                                    download="Aditya_Raj_Resume.pdf"
+                                    href="mailto:adityasrivastav0853@gmail.com"
                                     sx={styles.secondaryButton}
                                 >
-                                    Download Resume
+                                    Get in Touch
                                 </Button>
                             </Stack>
                         </motion.div>
@@ -76,7 +74,7 @@ const Services = () => {
                                 }
                             }}
                         >
-                            {content.services.map((service, index) => (
+                            {((content as any).services || []).map((service: any, index: number) => (
                                 <Grid size={{ xs: 12, sm: 6 }} key={index}>
                                     <motion.div
                                         variants={{

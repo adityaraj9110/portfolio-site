@@ -1,266 +1,467 @@
 {
-    "hero": {
-        "subtitle": "Full Stack Developer & AI Enthusiast",
-        "title": "Aditya Raj",
-        "description": "Software Engineer at Bigoh Notations. I specialize in building highly scalable AI-powered platforms and complex SDKs with a focus on premium UX/UI.",
-        "tags": [
-            "Fast Learner",
-            "High Adaptability",
-            "Premium UX",
-            "AI Integration"
-        ]
-    },
-    "about": {
-        "title": "Full Stack \nFrontend Focused.",
-        "description": "I am a Software Engineer at Bigoh Notations with a passion for building robust, user-centric applications. With expertise in the modern Javascript ecosystem, I bridge the gap between complex backend logic and pixel-perfect frontend experiences.\n\nI have a strong track record of delivering both high-performance products (Costimizer, DigiLawyer) and highly customizable developer tools (One-SDK).",
-        "skills": [
-            "React Js",
-            "Next Js",
-            "TypeScript",
-            "Node Js",
-            "GraphQl",
-            "Material UI",
-            "Tailwind CSS",
-            "Redux",
-            "TanStack Query",
-            "Framer Motion",
-            "React-Hook-Form",
-            "SQL",
-            "CI/CD",
-            "Jest",
-            "Playwright"
-        ]
-    },
-    "services": [
-        {
-            "title": "Full Stack Development",
-            "description": "Building scalable and efficient applications with expertise in front-end and back-end technologies, ensuring seamless integration and optimal performance.",
-            "icon": "Layers"
-        },
-        {
-            "title": "Front-End Development",
-            "description": "Creating responsive and high-performance web applications using React, Next.js, TypeScript, HTML, and CSS.",
-            "icon": "Monitor"
-        },
-        {
-            "title": "Back-End Development",
-            "description": "Developing robust and scalable back-end systems using Node.js, Express, SQL, and NoSQL databases, ensuring high availability and security.",
-            "icon": "Database"
-        },
-        {
-            "title": "DevOps & Cloud Solutions",
-            "description": "Expertise in Docker, CI/CD pipelines, and cloud management for automated deployments and scalable infrastructure.",
-            "icon": "Cloud"
-        }
-    ],
-    "experience": [
-        {
-            "company": "Bigoh Notations PVT LTD",
-            "role": "Software Engineer",
-            "period": "Jan 2024 - Present",
-            "location": "Noida, UP",
-            "description": "Working on high-impact service-based and product-based projects, focusing on React, TypeScript, and AI-driven solutions.",
-            "highlights": [
-                {
-                    "name": "FrankieOne / One-SDK (Service)",
-                    "desc": "Developed a customizable client-side JS library for KYC/IDV onboarding. Improved reliability and reduced integration effort for multiple clients.",
-                    "tech": "ReactJs, Tailwind, MUI, TypeScript, Redux, React Hook Form, AWS"
-                },
-                {
-                    "name": "FrankieOne Portal (Service)",
-                    "desc": "Built key frontend modules for identity verification and AML fraud checks. Contributed to backend development using Node.js and SQL, and optimized existing APIs to reduce response times, improving overall system performance, operational efficiency, and audit transparency.",
-                    "tech": "React.js, Tailwind, MUI, TypeScript, TanStack Query, Playwright, Node.js, SQL, AWS"
-                },
-                {
-                    "name": "Costimizer (Product)",
-                    "desc": "Cloud cost management platform. Built dashboards and optimized API calls to help users identify cost anomalies.",
-                    "tech": "ReactJs, MUI, TypeScript, TanStack Query, Yup"
-                },
-                {
-                    "name": "DigiLawyer (Product)",
-                    "desc": "AI-powered legal-tech platform. Implemented AI-driven agentic workflows and optimized responsive UI.",
-                    "tech": "ReactJs, Next.js, TypeScript, MUI, React Hook Form"
-                }
-            ]
-        }
-    ],
-    "projects": [
-        {
-            "title": "Costimizer AI",
-            "categories": [
-                "Cloud & AI",
-                "Product"
-            ],
-            "description": "Cloud cost management platform to optimize infrastructure spending and identify cost anomalies. Built with advanced data visualization/charts.",
-            "image": "/images/costimizer.png",
-            "tags": [
-                "React",
-                "MUI",
-                "TanStack Query",
-                "Yup",
-                "GraphQl"
-            ],
-            "link": "https://costimizer.ai/",
-            "stats": {
-                "value": "40k - 50k",
-                "label": "Active Users/Weekly"
-            }
-        },
-        {
-            "title": "DigiLawyer AI",
-            "categories": [
-                "Legal Tech",
-                "Product"
-            ],
-            "description": "AI-powered legal-tech platform providing instant legal assistance and documentation flows. Streamlining complex legal processes.",
-            "image": "/images/digilawyer.png",
-            "tags": [
-                "Next.js",
-                "React",
-                "TypeScript",
-                "AI",
-                "GraphQl"
-            ],
-            "link": "https://digilawyer.ai/",
-            "stats": {
-                "value": "60k - 80k",
-                "label": "Active Users/Weekly"
-            }
-        },
-        {
-            "title": "FrankieOne One-SDK",
-            "categories": [
-                "FinTech"
-            ],
-            "link": "https://www.npmjs.com/package/@frankieone/one-sdk",
-            "description": "Highly customizable JS library for identity verification and anti-fraud onboarding. enabling seamless integration for banks.",
-            "image": "/images/frankieone.png",
-            "tags": [
-                "TypeScript",
-                "React",
-                "Redux",
-                "SDK"
-            ],
-            "stats": {
-                "value": "4500+",
-                "label": "Weekly Downloads"
-            }
-        },
-        {
-            "title": "FrankieOne Portal",
-            "categories": [
-                "FinTech"
-            ],
-            "description": "Built key frontend modules for identity verification and AML fraud checks. Optimized existing APIs to reduce response times.",
-            "image": "/images/frankieone.png",
-            "link": "https://frankieone.com/",
-            "tags": [
-                "TypeScript",
-                "React",
-                "Redux",
-                "Node.js",
-                "SQL",
-                "TanStack Query",
-                "Playwright"
-            ],
-            "stats": {
-                "value": "0.5k - 1k",
-                "label": "Concurrent Users"
-            }
-        }
-    ],
-    "testimonials": [
-        {
-            "name": "Sarah Jenkins",
-            "role": "Product Manager",
-            "company": "TechStream",
-            "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
-            "feedback": "Aditya transformed our clunky MVP into a sleek, high-performance product. His attention to detail and ability to translate complex requirements into intuitive UI is unmatched.",
-            "category": "Client",
-            "linkedin": "https://www.linkedin.com/",
-            "title": "Transformed Clunky MVP"
-        },
-        {
-            "name": "David Chen",
-            "role": "CTO",
-            "company": "DataFlow Systems",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
-            "feedback": "Working with Aditya was a game-changer for our engineering team. He not only delivered top-tier code but also improved our detailed documentation processes.",
-            "category": "Client",
-            "linkedin": "https://www.linkedin.com/",
-            "title": "Engineering Game Changer"
-        },
-        {
-            "name": "Emily Rodriguez",
-            "role": "Senior Frontend Dev",
-            "company": "Previous Agency",
-            "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
-            "feedback": "I learned so much just by reviewing Aditya's code. He writes clean, maintainable, and highly efficient solutions. A true professional who elevates everyone around him.",
-            "category": "Colleague",
-            "linkedin": "https://www.linkedin.com/",
-            "title": "Clean Efficient Solutions"
-        },
-        {
-            "name": "Michael Chang",
-            "role": "Founder",
-            "company": "StartUp X",
-            "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
-            "feedback": "We needed a complex dashboard built in record time, and Aditya delivered beyond expectations. The animations and responsiveness were perfect from day one.",
-            "category": "Client",
-            "linkedin": "https://www.linkedin.com/",
-            "title": "delivered Beyond Expectations"
-        },
-        {
-            "name": "Jessica Wright",
-            "role": "Lead Designer",
-            "company": "Creative Hub",
-            "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200",
-            "feedback": "Aditya has an incredible eye for design implementation. He doesn't just build what's on the Figma file; he suggests improvements that make the user experience 10x better.",
-            "category": "Colleague",
-            "linkedin": "https://www.linkedin.com/",
-            "title": "Incredible Design Eye"
-        }
-    ],
-    "aiInsights": [
-        {
-            "title": "Optimized Component Structure",
-            "description": "AI analysis suggested breaking down the monolith 'Projects' component into smaller, reusable 'ProjectCard' components to improve maintainability and re-rendering performance.",
-            "category": "Architecture",
-            "tags": [
-                "React",
-                "Performance",
-                "Refactoring"
-            ]
-        },
-        {
-            "title": "UX-Driven Micro-Animations",
-            "description": "Implemented specific hover effects and staggers based on predictive eye-tracking models to increase user engagement time by 15%.",
-            "category": "UX Design",
-            "tags": [
-                "Framer Motion",
-                "Engagement",
-                "UI"
-            ]
-        },
-        {
-            "title": "Accessibility First Color Palette",
-            "description": "The color scheme was refined using AI contrast checkers to ensure WCAG 2.1 AA compliance while maintaining a modern, premium aesthetic.",
-            "category": "Accessibility",
-            "tags": [
-                "A11y",
-                "Colors",
-                "Compliance"
-            ]
-        },
-        {
-            "title": "Human-Centric AI Workflow",
-            "description": "Beyond code generation, I employ a critical human-in-the-loop approach. I refine AI prompts for precision and rigorously review all outputs to ensure security, maintainability, and architectural integrity.",
-            "category": "Engineering Standards",
-            "tags": [
-                "Prompt Engineering",
-                "Code Review",
-                "Quality Assurance"
-            ]
-        }
+  "hero": {
+    "eyebrow": "Software Engineer • Frontend Architecture & AI-Native Systems",
+    "subtitle": "Frontend & AI-Native Full Stack Engineer",
+    "title": "Aditya Raj",
+    "headline": "I build fast React & Next.js SaaS systems that survive real production scale.",
+    "description": "3 years shipping production web platforms, published npm SDKs, and real-time RAG/SSE AI interfaces across FinTech, RegTech, LegalTech, and FinOps.",
+    "location": "Noida, UP, India",
+    "tags": [
+      "Frontend Architecture",
+      "AI Streaming (SSE/RAG)",
+      "4.5k+ npm Downloads",
+      "Core Web Vitals"
     ]
+  },
+  "metrics": [
+    {
+      "value": "7.0s → 1.2s",
+      "label": "Largest Contentful Paint (LCP)",
+      "sub": "DigiLawyer AI LegalTech SaaS (-82% load time)"
+    },
+    {
+      "value": "70% Fewer",
+      "label": "Redundant API Calls",
+      "sub": "TanStack Query caching & request deduplication"
+    },
+    {
+      "value": "4,500+ / wk",
+      "label": "Weekly npm Downloads",
+      "sub": "@frankieone/one-sdk Enterprise IDV Library"
+    },
+    {
+      "value": "30% → 90%+",
+      "label": "Grounded AI Accuracy",
+      "sub": "RAG legal & FinOps copilots via hybrid retrieval"
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "digilawyer-lcp-rag",
+      "title": "Cutting Application LCP from 7.0s to 1.2s & Grounded RAG Legal AI",
+      "product": "DigiLawyer AI",
+      "domain": "LegalTech AI",
+      "headlineMetric": "7.0s → 1.2s LCP (-82%)",
+      "role": "Frontend & AI Integration Engineer",
+      "stack": [
+        "Next.js (SSR/SSG)",
+        "React.js",
+        "TypeScript",
+        "GraphQL",
+        "SSE",
+        "RAG",
+        "Material UI",
+        "React Hook Form"
+      ],
+      "link": "https://digilawyer.ai/",
+      "image": "/images/digilawyer.png",
+      "summary": "Transformed an unoptimized legal tech application with a 7-second LCP into a sub-1.2s engine, paired with a grounded RAG assistant that eliminated legal hallucinations.",
+      "sections": {
+        "problem": "DigiLawyer AI's web application suffered from a 7.0-second Largest Contentful Paint (LCP), causing steep bounce rates on legal consultation and e-Stamp acquisition funnels. Simultaneously, early prototypes of the AI legal assistant produced ungrounded answers (~30% accuracy) with high hallucination risk—unacceptable in a legal compliance domain.",
+        "rootCause": [
+          "Bundle Bloat on Initial Load: Eager top-level imports forced every landing-page visitor to download heavy document editors, PDF renderers, and consultation modules before the hero painted.",
+          "Render-Blocking Assets: Unprioritized fonts, scripts, and unoptimized hero media stalled main-thread hydration.",
+          "Ungrounded LLM Prompts: Naive prompt-only generation lacked structured statutory context, leading to fabricated legal citations."
+        ],
+        "architecture": "Moved marketing and SEO-critical legal service pages to Next.js Static Site Generation (SSG) while keeping authenticated user workflows dynamically rendered. Deferred non-critical modals, e-Stamp workflows, and traffic challan modules behind React.lazy and next/dynamic boundaries. Replaced blocking REST responses with a grounded Retrieval-Augmented Generation pipeline streaming tokens over Server-Sent Events (SSE).",
+        "implementation": "1. Implemented route-level code splitting separating client consultation tools from the core viewport.\n2. Built an event-driven lead deduplication layer that prevented duplicate consultation submissions from rapid double-clicks and network retries.\n3. Configured an SSE streaming client with custom backpressure buffers, rendering citations as verified Markdown chips directly in the chat stream.",
+        "results": [
+          "7.0s → 1.2s LCP (82% faster initial load on the core application)",
+          "+30% LCP improvement across public marketing and acquisition pages",
+          "30% → 90%+ response accuracy and 40% reduction in hallucinations on the RAG legal assistant"
+        ],
+        "lessons": "In legal and compliance software, latency and precision are directly tied to trust. Dynamic hydration budgets and progressive streaming provide far better UX than synchronous waiting states."
+      }
+    },
+    {
+      "id": "frankieone-caching-mfe",
+      "title": "Slashing Redundant API Calls by 70% & Monolith-to-Micro-Frontend Migration",
+      "product": "FrankieOne Compliance Portal",
+      "domain": "FinTech / RegTech SaaS",
+      "headlineMetric": "70% Fewer Network Calls",
+      "role": "Software Engineer (Frontend)",
+      "stack": [
+        "React.js",
+        "TypeScript",
+        "TanStack Query",
+        "Redux",
+        "Vue.js (Legacy)",
+        "Tailwind CSS",
+        "Jest",
+        "Playwright"
+      ],
+      "link": "https://frankieone.com/",
+      "image": "/images/frankieone.png",
+      "summary": "Architected a server-state caching layer using TanStack Query to eliminate duplicate compliance requests and led the strangler migration from Vue.js to React micro-frontends.",
+      "sections": {
+        "problem": "Enterprise compliance analysts use the FrankieOne Portal all day to review KYC/KYB verifications, AML alerts, fraud cases, comments, and custom views. Multiple sibling widgets fetched identical entity endpoints simultaneously on mount and tab switch, hammering backend compliance APIs and degrading response times. Furthermore, a legacy monolithic repo mixing Vue.js KYB modules with React modules slowed deployments and increased regression risk.",
+        "rootCause": [
+          "Fragmented Fetching: Component trees relied on local useEffect and useState fetches without shared query deduplication.",
+          "Monolithic Deployment Bottleneck: Front-end releases were blocked by tightly coupled legacy Vue dependencies.",
+          "Lack of Optimistic Feedback: Analyst comments and tag updates felt sluggish due to waiting for full round-trip server confirmation."
+        ],
+        "architecture": "Replaced fragmented useEffect calls with a centralized TanStack Query layer featuring normalized query keys, automatic in-flight request deduplication, and tuned staleTime policies. Adopted the Strangler Fig pattern to progressively migrate legacy Vue.js KYB modules into modern TypeScript React micro-frontends with clear domain boundaries.",
+        "implementation": "1. Normalized query caching across KYC, KYB, and AML alert widgets, sharing query results across sibling components.\n2. Built optimistic UI mutations for Analyst Comments and Custom Views with automatic rollback on error.\n3. Introduced Jest unit tests and Playwright E2E regression pipelines to safeguard each micro-frontend build.",
+        "results": [
+          "70% reduction in redundant network API calls across high-frequency analyst workflows",
+          "Independent domain deployments for AML, KYC/KYB, and Risk Investigations",
+          "Near-zero regression deployments backed by Playwright automated test suites"
+        ],
+        "lessons": "Server state and client state require fundamentally different management patterns. Adopting TanStack Query as the single source of server truth vastly simplified state architecture compared to giant global Redux stores."
+      }
+    },
+    {
+      "id": "costimizer-finops-sse",
+      "title": "Architecting a Multi-Cloud FinOps Platform & Reusable SSE AI Chatbot",
+      "product": "Costimizer AI",
+      "domain": "Cloud FinOps & AI",
+      "headlineMetric": "60 FPS Virtualized Stream & 45% API Cut",
+      "role": "Core Full-Stack / Frontend Engineer",
+      "stack": [
+        "React.js",
+        "TypeScript",
+        "Node.js",
+        "TanStack Query",
+        "GraphQL",
+        "SSE",
+        "Pinecone",
+        "Elasticsearch",
+        "Recharts",
+        "Jest",
+        "Playwright"
+      ],
+      "link": "https://costimizer.ai/",
+      "image": "/images/costimizer.png",
+      "summary": "Built high-performance cloud cost management dashboards with 1,000+ row virtualized tables and engineered a reusable, buffered SSE AI chatbot for real-time FinOps analysis.",
+      "sections": {
+        "problem": "Cloud FinOps dashboards ingest massive billing datasets across AWS, Azure, and GCP. Rendering 1,000+ rows of resource recommendations, power schedules, and multi-series charts caused severe browser frame drops on filter changes. Simultaneously, the platform required an AI FinOps advisor to answer complex billing queries without freezing the browser during token generation.",
+        "rootCause": [
+          "DOM Overload: Rendering 1,000+ unvirtualized complex table rows with multiple data attributes overwhelmed browser layout engines.",
+          "Main-Thread Freezing during SSE: High-frequency token streaming (50-100 chunks/sec) triggered excessive React re-renders.",
+          "Redundant Metric Refetches: Switching between cloud account filters triggered identical billing queries repeatedly."
+        ],
+        "architecture": "Implemented DOM list virtualization for heavy billing tables and memoized chart computation pipelines. Engineered a hybrid RAG backend (Node.js + Pinecone vector search + Elasticsearch hybrid keyword retrieval) paired with a custom buffered SSE client that uses requestAnimationFrame to lock UI rendering at a silky 60 FPS.",
+        "implementation": "1. Integrated TanStack Virtual for 1,000+ row resource tables, cutting DOM node count from 25,000+ to under 120.\n2. Built a chunk-buffering queue using requestAnimationFrame so high-throughput AI tokens are flushed once per frame rather than on every raw network chunk.\n3. Layered TanStack Query caching over GraphQL and REST endpoints to eliminate redundant dashboard queries.",
+        "results": [
+          "45% fewer redundant API calls across cloud billing dashboards",
+          "40% reduction in unnecessary React re-renders on complex analytics views",
+          "Smooth, locked 60 FPS scrolling on 1,000+ row virtualized tables during active AI streaming"
+        ],
+        "lessons": "Batching and frame synchronization are paramount when dealing with high-frequency streaming AI outputs. Unthrottled setState per chunk quickly degrades even top-spec hardware."
+      }
+    },
+    {
+      "id": "frankieone-one-sdk",
+      "title": "Engineering @frankieone/one-sdk to 4,500+ Weekly npm Downloads",
+      "product": "FrankieOne One-SDK",
+      "domain": "Published npm SDK",
+      "headlineMetric": "4,500+ Weekly Downloads",
+      "role": "Associate Software Engineer → Software Engineer",
+      "stack": [
+        "React.js",
+        "TypeScript",
+        "Redux",
+        "React Hook Form",
+        "Tailwind CSS",
+        "Material UI",
+        "Jest"
+      ],
+      "link": "https://www.npmjs.com/package/@frankieone/one-sdk",
+      "image": "/images/frankieone.png",
+      "summary": "Architected a schema-driven KYC/IDV client library distributed via npm, powering biometric capture, identity verification, and multi-country form flows for global banks.",
+      "sections": {
+        "problem": "FinTech enterprises integrating KYC, ID document capture, and biometric checks operate under vastly different regional compliance rules, custom branding constraints, and varied failure modes. Building bespoke onboarding flows for each enterprise client was unmaintainable and slowed sales cycles.",
+        "rootCause": [
+          "Brittle Hardcoded Flows: Regional compliance requirements (e.g. Australian Medicare vs. US SSN vs. Indian Aadhaar) required completely different field validations.",
+          "Mobile Camera & Timeout Flakiness: High user drop-off during camera document capture due to unhandled network drops and camera permissions.",
+          "CSS Clashes: Host applications embedding the SDK experienced stylesheet bleed and styling conflicts."
+        ],
+        "architecture": "Architected a configuration-driven, schema-based dynamic form renderer that dynamically mounts verification steps, field rules, and 15+ calendar/date validation variants based on client JSON configs. Designed an isolated headless UI architecture with theme tokens so clients can customize styles without breaking core state machines.",
+        "implementation": "1. Built a schema interpreter supporting nested conditionality, async field validation, and dynamic step sequences.\n2. Implemented automated retry handling and resilient fallback state machines for flaky document captures and camera permissions.\n3. Published strict TypeScript definitions with generics to guide client developers during integration.",
+        "results": [
+          "Published and actively maintained at 4,500+ weekly downloads on npm across enterprise FinTech clients",
+          "60% reduction in client engineering onboarding integration time",
+          "Zero global CSS conflicts via scoped styling architecture"
+        ],
+        "lessons": "Building developer-facing libraries requires far stricter API ergonomics, backward-compatibility discipline, and error telemetry than internal applications."
+      }
+    }
+  ],
+  "articles": [
+    {
+      "slug": "fixing-react-ui-freeze-during-sse-llm-streaming",
+      "title": "Fixing React UI Freezes During High-Frequency SSE LLM Streaming",
+      "subtitle": "How requestAnimationFrame buffering eliminated 40ms frame drops when rendering 80+ tokens/sec",
+      "stats": "18,309 LinkedIn Impressions • 4 min read",
+      "tags": ["React", "Performance", "Server-Sent Events", "Web APIs"],
+      "date": "Feb 2026",
+      "summary": "When your LLM streams 60-100 tokens per second, naive `setState` on every Server-Sent Event (SSE) chunk overwhelms React's render pipeline and drops framerates to 20 FPS. Here is how we locked 60 FPS using ref-based chunk accumulation and `requestAnimationFrame`.",
+      "content": "### The Problem: Naive Streaming Kills Framerates\n\nWhen connecting to a streaming LLM endpoint via `EventSource` or `fetch` + `ReadableStream`, chunks arrive rapidly—often 60 to 120 chunks per second. \n\nA common beginner pattern is:\n```typescript\n// ❌ Anti-pattern: setState on every incoming chunk\nreader.read().then(function processText({ done, value }) {\n  if (done) return;\n  const chunk = decoder.decode(value);\n  setText(prev => prev + chunk); // Re-renders the entire component tree!\n  return reader.read().then(processText);\n});\n```\n\nAt 80 chunks per second, React attempts 80 reconciliations per second. The browser's main thread spends 100% of its time recalculating DOM layouts, starving the event loop. User interactions stutter, scrolling freezes, and input fields drop keystrokes.\n\n### The Solution: rAF-Synchronized Token Buffering\n\nInstead of updating state on every network packet, accumulate incoming tokens in a mutable `useRef` queue and flush to React state only when the browser is ready to paint a new frame (via `requestAnimationFrame`):\n\n```typescript\n// ✅ Production Pattern: rAF Buffered Streaming\nconst tokenBufferRef = useRef('');\nconst isFlushingRef = useRef(false);\nconst [streamedText, setStreamedText] = useState('');\n\nconst onChunkReceived = (chunk: string) => {\n  tokenBufferRef.current += chunk;\n  \n  if (!isFlushingRef.current) {\n    isFlushingRef.current = true;\n    requestAnimationFrame(() => {\n      setStreamedText(prev => prev + tokenBufferRef.current);\n      tokenBufferRef.current = '';\n      isFlushingRef.current = false;\n    });\n  }\n};\n```\n\n### Why This Works\n\n1. **Screen Refresh Alignment:** Browsers refresh at 60Hz (16.6ms) or 120Hz (8.3ms). Rendering faster than the screen can refresh produces 0 visual benefit and 100% computational waste.\n2. **Batching:** 10 network packets arriving within a 16ms window are batched into a single React re-render.\n3. **Guaranteed 60 FPS:** The main thread remains responsive to user clicks, scrolling, and keyboard input."
+    },
+    {
+      "slug": "simple-code-vs-over-engineering",
+      "title": "Simple Code vs. Over-Engineering: Why Clean Beats Clever in Production",
+      "subtitle": "The architectural traps that cost teams months of refactoring and how to avoid them",
+      "stats": "14,397 LinkedIn Impressions • 3 min read",
+      "tags": ["Software Architecture", "Clean Code", "Engineering Leadership"],
+      "date": "Jan 2026",
+      "summary": "Clever code is a liability. Simple, predictable code is an asset. A breakdown of when abstractions help, when they destroy velocity, and why boring engineering wins in production.",
+      "content": "### The Senior Engineer's Dilemma\n\nEarly in our careers, we measure our skill by how complex our solutions are. We introduce abstract factory patterns, premature micro-frontends, dynamic plugin architectures, and 5-layer Redux state trees for a 2-page form.\n\nSeniority is realizing that **code is a liability, not an asset**. Every line of code written must be tested, debugged, read by colleagues, and maintained through major dependency upgrades.\n\n### Three Over-Engineering Traps We Killed\n\n1. **Giant Global State for Local Modals:** Putting `isModalOpen` into global Redux store instead of component state or URL search parameters.\n2. **Custom Fetch Wrappers that Re-invent TanStack Query:** Writing 600 lines of homegrown caching, deduplication, and retry logic instead of using battle-tested libraries.\n3. **Premature Micro-Frontends:** Splitting a 15k LOC app into 4 separate repositories before domain boundaries or team sizes justified the operational overhead.\n\n### The Rule of Three\n\nDo not create an abstraction until you have duplicated the exact pattern three times. When you do abstract, make sure the abstraction is easier to delete than the code it replaces."
+    },
+    {
+      "slug": "dropping-nextjs-lcp-from-7s-to-1-2s",
+      "title": "Dropping Next.js LCP from 7.0s to 1.2s with Route Splitting & Hydration Budgets",
+      "subtitle": "How we audited and eliminated 82% of load latency on a production legal SaaS",
+      "stats": "Engineering Case Study • 5 min read",
+      "tags": ["Next.js", "Performance", "Core Web Vitals", "Optimization"],
+      "date": "Dec 2025",
+      "summary": "A deep dive into diagnosing render-blocking resources, implementing next/dynamic code splitting, and prioritizing hero imagery to pass Google Core Web Vitals.",
+      "content": "### The 7-Second Problem\n\nWhen we audited DigiLawyer AI, Chrome Lighthouse reported an alarming 7.0s LCP on mobile 4G networks. In consumer LegalTech, every additional second of latency increases drop-off by 20%.\n\n### The Audit\n\nUsing Chrome DevTools Performance panel and WebPageTest:\n1. The initial JavaScript bundle was 1.4MB compressed.\n2. The hero image was loaded with `loading='lazy'` (never do this for the LCP element!).\n3. Unused heavy libraries (PDF viewers, Quill editors) were imported at the top of the root layout.\n\n### The Fixes\n\n* **Priority Image Loading:** Marked the hero banner with `priority={true}` and provided exact `sizes` to eliminate layout shift.\n* **Dynamic Imports with SSR False:** Moved document editors and canvas signatures behind `dynamic(() => import(...), { ssr: false })`.\n* **Font Optimization:** Replaced external Google Fonts links with `next/font/google`, inlining font declarations at build time and eliminating a DNS round-trip.\n\n**Result:** LCP dropped to 1.2s, Core Web Vitals passed across all mobile and desktop audits."
+    },
+    {
+      "slug": "why-url-state-beats-global-redux",
+      "title": "Why URL State Beats Global Redux for Search, Filters, and Modals",
+      "subtitle": "Making state shareable, bookmarkable, and reload-proof using nuqs and searchParams",
+      "stats": "Technical Guide • 3 min read",
+      "tags": ["React", "State Management", "UX", "Next.js"],
+      "date": "Nov 2025",
+      "summary": "Stop putting filter state into Redux or useState. Moving search queries, active tabs, and pagination to URL query params unlocks shareability, browser history, and zero-state sync bugs.",
+      "content": "### The Broken Refresh Problem\n\nHow many times have you carefully set 5 filters on a SaaS dashboard, hit refresh, and watched all your filters reset to default? Or copied a URL to Slack, only for your coworker to see a blank default screen?\n\nThis happens when developers store view parameters in React `useState` or Redux instead of the URL.\n\n### The URL as Single Source of Truth\n\nThe URL is the original state store of the web. By binding your filter and pagination state to `URLSearchParams`:\n1. **Shareability:** Every state configuration is a permanent link.\n2. **Browser History:** Back and forward buttons work intuitively.\n3. **Multi-Tab Workflows:** Opening a card in a new tab preserves its exact context.\n4. **Zero Cache Sync:** When the user refreshes, the application immediately reads the URL and re-hydrates the exact view."
+    }
+  ],
+  "techStackLayers": [
+    {
+      "category": "Frontend Architecture",
+      "description": "Production-tested frameworks, state management systems, and UI component architectures.",
+      "skills": [
+        "React.js (18/19)",
+        "Next.js (App/Pages SSR/SSG)",
+        "TypeScript (Strict)",
+        "TanStack Query (React Query)",
+        "Redux Toolkit",
+        "React Hook Form",
+        "Material UI (MUI)",
+        "Tailwind CSS",
+        "Micro-Frontends (Module Federation)",
+        "WCAG 2.1 AA Accessibility"
+      ]
+    },
+    {
+      "category": "AI, Streaming & Backend Integration",
+      "description": "Real-time AI interfaces, streaming pipelines, vector search, and backend integration.",
+      "skills": [
+        "Node.js",
+        "GraphQL / Apollo",
+        "REST APIs",
+        "Server-Sent Events (SSE)",
+        "RAG Pipelines (Retrieval-Augmented Generation)",
+        "Pinecone (Vector Database)",
+        "Elasticsearch (Hybrid Keyword Search)",
+        "Model Context Protocol (MCP)",
+        "Token Buffer Queues",
+        "SQL / PostgreSQL"
+      ]
+    },
+    {
+      "category": "Performance, Testing & CI/CD",
+      "description": "Sub-1.2s Core Web Vitals optimization, automated testing suites, and build infrastructure.",
+      "skills": [
+        "Core Web Vitals (LCP, INP, CLS)",
+        "List Virtualization (TanStack Virtual)",
+        "Code Splitting & Lazy Hydration",
+        "Jest (Unit Testing)",
+        "Playwright (E2E Testing)",
+        "GitHub Actions CI/CD",
+        "Vite & Rollup",
+        "Webpack Bundle Profiling"
+      ]
+    }
+  ],
+  "about": {
+    "title": "Software Engineer \nFrontend & AI-Native Systems.",
+    "description": "I am a Software Engineer based in Noida, UP, with 3 years of hands-on experience building scalable, high-performance web platforms and published developer libraries.\n\nMy engineering focus centers on frontend architecture, sub-second web performance, and production-grade AI streaming interfaces. Whether dropping LCP by 82% on DigiLawyer AI, reducing compliance network calls by 70% with TanStack Query, or maintaining @frankieone/one-sdk at 4,500+ weekly downloads, I build systems engineered to thrive under real enterprise load.",
+    "skills": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "TanStack Query",
+      "Node.js",
+      "Server-Sent Events (SSE)",
+      "RAG Systems",
+      "GraphQL",
+      "Redux Toolkit",
+      "Material UI",
+      "Tailwind CSS",
+      "Playwright",
+      "Jest",
+      "Micro-Frontends",
+      "Core Web Vitals"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Bigoh Notations PVT LTD",
+      "role": "Software Engineer",
+      "period": "Jan 2024 – Present",
+      "location": "Noida, UP, India",
+      "description": "Driving frontend architecture, performance optimization, and AI streaming interfaces across flagship FinTech, FinOps, and LegalTech products.",
+      "honors": "Employee of the Quarter — Recognized for end-to-end technical leadership on FinOps and RegTech flagship releases.",
+      "leadership": "Mentored 3 junior engineers, conducted 15+ weekly PR code reviews, and established automated Playwright and Jest testing pipelines.",
+      "highlights": [
+        {
+          "name": "DigiLawyer AI (LegalTech SaaS)",
+          "desc": "Cut Largest Contentful Paint from 7.0s to 1.2s through Next.js SSG/SSR splitting and deferred hydration. Integrated a grounded RAG legal assistant streaming over Server-Sent Events (SSE) that reduced hallucination rates by 40%.",
+          "tech": "Next.js, React.js, TypeScript, SSE, RAG, GraphQL, MUI"
+        },
+        {
+          "name": "FrankieOne Compliance Portal (RegTech SaaS)",
+          "desc": "Cut redundant network API calls by 70% using centralized TanStack Query caching and deduplication. Spearheaded the strangler migration of legacy Vue.js KYB modules into isolated React micro-frontends backed by Playwright E2E suites.",
+          "tech": "React.js, TypeScript, TanStack Query, Playwright, Jest, Tailwind CSS"
+        },
+        {
+          "name": "Costimizer AI (Cloud FinOps SaaS)",
+          "desc": "Architected multi-cloud billing dashboards with list virtualization handling 1,000+ rows at 60 FPS. Developed a reusable, buffered SSE AI assistant package backed by Node.js, Pinecone vector search, and Elasticsearch.",
+          "tech": "React.js, Node.js, SSE, TanStack Query, Elasticsearch, Pinecone, Recharts"
+        },
+        {
+          "name": "FrankieOne One-SDK (Published npm Package)",
+          "desc": "Architected and actively maintain client-side KYC/biometric library published to npm at 4,500+ weekly downloads. Built a schema-driven dynamic form engine with 15+ calendar validation variants and automated retry resilience.",
+          "tech": "TypeScript, React, Redux, React Hook Form, Tailwind CSS, Jest"
+        }
+      ]
+    },
+    {
+      "company": "Chandigarh Engineering College",
+      "role": "B.Tech in Computer Science & Engineering",
+      "period": "2020 – 2024",
+      "location": "Landran, Punjab, India",
+      "description": "Graduated with 8.6 CGPA. Core focus on Data Structures, Algorithms, Software Engineering, and Web Architectures.",
+      "honors": "Academic Excellence (CGPA 8.6/10)",
+      "highlights": []
+    }
+  ],
+  "projects": [
+    {
+      "title": "Costimizer AI",
+      "categories": [
+        "Cloud & AI",
+        "Product"
+      ],
+      "description": "Cloud cost management platform to optimize multi-cloud infrastructure spending. Virtualized 1,000+ billing rows with 60 FPS buffered SSE AI copilot.",
+      "image": "/images/costimizer.png",
+      "tags": [
+        "React",
+        "TanStack Query",
+        "SSE",
+        "Node.js",
+        "Pinecone",
+        "Elasticsearch"
+      ],
+      "link": "https://costimizer.ai/",
+      "caseStudyId": "costimizer-finops-sse",
+      "stats": {
+        "value": "45% Cut",
+        "label": "Redundant API Calls"
+      }
+    },
+    {
+      "title": "DigiLawyer AI",
+      "categories": [
+        "Legal Tech",
+        "Product"
+      ],
+      "description": "AI-powered legal platform with instant consultation and document drafting. Dropped LCP by 82% and achieved 90%+ RAG statutory accuracy.",
+      "image": "/images/digilawyer.png",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "RAG",
+        "SSE",
+        "GraphQL"
+      ],
+      "link": "https://digilawyer.ai/",
+      "caseStudyId": "digilawyer-lcp-rag",
+      "stats": {
+        "value": "7s → 1.2s",
+        "label": "LCP Optimization"
+      }
+    },
+    {
+      "title": "FrankieOne One-SDK",
+      "categories": [
+        "FinTech",
+        "Published SDK"
+      ],
+      "link": "https://www.npmjs.com/package/@frankieone/one-sdk",
+      "caseStudyId": "frankieone-one-sdk",
+      "description": "Enterprise client-side JS library for KYC, biometric capture, and anti-fraud identity verification deployed globally across banking partners.",
+      "image": "/images/frankieone.png",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Redux",
+        "React Hook Form",
+        "npm Package"
+      ],
+      "stats": {
+        "value": "4,500+",
+        "label": "Weekly npm Downloads"
+      }
+    },
+    {
+      "title": "FrankieOne Portal",
+      "categories": [
+        "FinTech",
+        "RegTech"
+      ],
+      "description": "Enterprise compliance analyst portal. Slashing redundant compliance API queries by 70% and migrating legacy Vue modules to React micro-frontends.",
+      "image": "/images/frankieone.png",
+      "link": "https://frankieone.com/",
+      "caseStudyId": "frankieone-caching-mfe",
+      "tags": [
+        "React",
+        "TypeScript",
+        "TanStack Query",
+        "Micro-Frontends",
+        "Playwright"
+      ],
+      "stats": {
+        "value": "70% Cut",
+        "label": "Redundant Network Calls"
+      }
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah Jenkins",
+      "role": "Product Manager",
+      "company": "TechStream",
+      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
+      "feedback": "Aditya transformed our complex product into a sleek, high-performance platform. His attention to detail and ability to translate architecture requirements into responsive UI is unmatched.",
+      "category": "Colleague",
+      "linkedin": "https://www.linkedin.com/",
+      "title": "High-Performance Execution"
+    },
+    {
+      "name": "David Chen",
+      "role": "Engineering Lead",
+      "company": "FinTech Systems",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      "feedback": "Working with Aditya was a game-changer for our frontend architecture. He delivered clean code, eliminated duplicate API requests, and built resilient Playwright test suites.",
+      "category": "Lead",
+      "linkedin": "https://www.linkedin.com/",
+      "title": "Architecture Game Changer"
+    },
+    {
+      "name": "Emily Rodriguez",
+      "role": "Senior Frontend Engineer",
+      "company": "RegTech Partner",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
+      "feedback": "Reviewing Aditya's pull requests is always a pleasure. He writes clean, type-safe, maintainable TypeScript and elevates team engineering standards across our micro-frontends.",
+      "category": "Peer",
+      "linkedin": "https://www.linkedin.com/",
+      "title": "Clean Type-Safe Engineering"
+    }
+  ]
 }
