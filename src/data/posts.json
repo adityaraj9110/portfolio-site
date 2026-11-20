@@ -1,0 +1,35 @@
+[
+  {
+    "id": "sse-streaming-raf",
+    "title": "Why Naive SSE Token Streaming Freezes React UIs",
+    "takeaway": "Buffering high-frequency LLM chunks with requestAnimationFrame and isolating active stream state cut dashboard re-renders by 40%.",
+    "topic": "AI & Streaming",
+    "url": "https://www.linkedin.com/in/aditya-raj-9b2165227/",
+    "impressions": 18309,
+    "reactions": 60,
+    "comments": 15,
+    "publishedDate": "2026-11-17"
+  },
+  {
+    "id": "simple-code-vs-overengineering",
+    "title": "Why Boring PRs Beat Clever React & TypeScript Abstractions",
+    "takeaway": "Deleting 100 lines of over-engineered hooks and keeping state local beats clever generics every time in production.",
+    "topic": "React Architecture",
+    "url": "https://www.linkedin.com/in/aditya-raj-9b2165227/",
+    "impressions": 14397,
+    "reactions": 90,
+    "comments": 13,
+    "publishedDate": "2026-11-14"
+  },
+  {
+    "id": "lcp-bundle-splitting",
+    "title": "Cutting Production LCP from 7.0s to 1.2s Without a Rewrite",
+    "takeaway": "Eliminating eager top-level imports for charts, modals, and PDF viewers via route-level code splitting and resource prioritization.",
+    "topic": "Performance",
+    "url": "https://www.linkedin.com/in/aditya-raj-9b2165227/",
+    "impressions": 5200,
+    "reactions": 36,
+    "comments": 25,
+    "publishedDate": "2026-11-16"
+  }
+]

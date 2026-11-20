@@ -29,6 +29,7 @@ import {
 import { Github, Linkedin } from 'lucide-react';
 import content from '../data/content.json';
 import { AskAiFooter } from '../components/layout/AskAiFooter';
+import { SelectedPosts } from '../components/sections/SelectedPosts';
 
 export default function HomePage() {
   const theme = useTheme();
@@ -423,87 +424,9 @@ export default function HomePage() {
         </Box>
 
         {/* ========================================================
-            5. RECENT WRITING & VIRAL BREAKDOWNS
+            5. RECENT WRITING & AUTO-SYNCED LINKEDIN HIGHLIGHTS
         ======================================================== */}
-        <Box sx={{ mb: { xs: 8, md: 12 } }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 4 }}>
-            <Box>
-              <Typography variant="overline" color="primary.main" sx={{ fontWeight: 700, letterSpacing: '0.08em' }}>
-                Engineering Notes
-              </Typography>
-              <Typography variant="h3" sx={{ fontWeight: 800, letterSpacing: '-0.025em' }}>
-                Writing &amp; Systems Thinking
-              </Typography>
-            </Box>
-            <Button
-              component={Link}
-              href="/writing"
-              endIcon={<ArrowForward />}
-              sx={{ fontWeight: 600, fontSize: '0.9rem' }}
-            >
-              All Articles (4)
-            </Button>
-          </Box>
-
-          <Grid container spacing={3}>
-            {content.articles.slice(0, 2).map((art) => (
-              <Grid size={{ xs: 12, md: 6 }} key={art.slug}>
-                <Paper
-                  elevation={0}
-                  sx={{
-                    p: 3,
-                    height: '100%',
-                    borderRadius: 2.5,
-                    bgcolor: isDark ? '#141416' : '#FFFFFF',
-                    border: '1px solid',
-                    borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}
-                >
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1.5 }}>
-                    <Typography variant="caption" sx={{ fontFamily: 'monospace', color: 'primary.main', fontWeight: 700 }}>
-                      {art.stats}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'monospace' }}>
-                      {art.date}
-                    </Typography>
-                  </Box>
-
-                  <Typography
-                    component={Link}
-                    href={`/writing/${art.slug}`}
-                    variant="h6"
-                    sx={{
-                      fontWeight: 700,
-                      lineHeight: 1.35,
-                      mb: 1,
-                      textDecoration: 'none',
-                      color: 'text.primary',
-                      '&:hover': { color: 'primary.main' }
-                    }}
-                  >
-                    {art.title}
-                  </Typography>
-
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6, flex: 1 }}>
-                    {art.summary}
-                  </Typography>
-
-                  <Button
-                    component={Link}
-                    href={`/writing/${art.slug}`}
-                    size="small"
-                    endIcon={<ArrowForward sx={{ fontSize: 14 }} />}
-                    sx={{ alignSelf: 'flex-start', fontWeight: 600, p: 0 }}
-                  >
-                    Read Article
-                  </Button>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+        <SelectedPosts />
 
         {/* ========================================================
             6. ARCHITECTURE-GROUPED TECH MATRIX

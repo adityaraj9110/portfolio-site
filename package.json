@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "preview": "next start"
+    "preview": "next start",
+    "sync:notion": "node scripts/sync-notion.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

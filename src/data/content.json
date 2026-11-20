@@ -212,7 +212,7 @@
       "slug": "dropping-nextjs-lcp-from-7s-to-1-2s",
       "title": "Dropping Next.js LCP from 7.0s to 1.2s with Route Splitting & Hydration Budgets",
       "subtitle": "How we audited and eliminated 82% of load latency on a production legal SaaS",
-      "stats": "Engineering Case Study • 5 min read",
+      "stats": "5,200 LinkedIn Impressions • 5 min read",
       "tags": ["Next.js", "Performance", "Core Web Vitals", "Optimization"],
       "date": "Dec 2025",
       "summary": "A deep dive into diagnosing render-blocking resources, implementing next/dynamic code splitting, and prioritizing hero imagery to pass Google Core Web Vitals.",

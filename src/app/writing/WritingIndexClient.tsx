@@ -16,6 +16,7 @@ import {
 import { ArrowForward, Article, Visibility } from '@mui/icons-material';
 import content from '../../data/content.json';
 import { AskAiFooter } from '../../components/layout/AskAiFooter';
+import { SelectedPosts } from '../../components/sections/SelectedPosts';
 
 export default function WritingIndexClient() {
   const theme = useTheme();
@@ -46,7 +47,7 @@ export default function WritingIndexClient() {
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
             Permanent, high-signal engineering articles distilled from real production scale and viral discussions
-            across LinkedIn (32k+ impressions) and Dev.to.
+            across LinkedIn (38k+ impressions) and Dev.to.
           </Typography>
         </Box>
 
@@ -148,6 +149,11 @@ export default function WritingIndexClient() {
             </Grid>
           ))}
         </Grid>
+
+        {/* Live Auto-Synced LinkedIn Highlights */}
+        <Box sx={{ mt: 8 }}>
+          <SelectedPosts />
+        </Box>
 
         {/* Footer Ask AI */}
         <AskAiFooter />
