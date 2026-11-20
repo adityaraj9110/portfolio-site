@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 
 /**
- * 1-Command Clipboard Sync
+ * 1-Command LinkedIn Sync (from Download or Clipboard)
  * 
  * Usage:
  *   npm run sync:clip
  * 
- * Reads the LinkedIn posts copied to your clipboard by the bookmarklet,
- * validates the structure, and writes to src/data/posts.json.
+ * Checks for:
+ *   1. ~/Downloads/posts.json (auto-downloaded by the bookmarklet)
+ *   2. Mac Clipboard (pbpaste)
+ * Validates the data, updates src/data/posts.json, and prints verified metrics.
  */
 
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
@@ -20,25 +23,48 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const targetPath = path.join(rootDir, 'src', 'data', 'posts.json');
 
-try {
-  let clipboardText = '';
+const downloadsDir = path.join(os.homedir(), 'Downloads');
+const downloadedPostsFile = path.join(downloadsDir, 'posts.json');
+
+let rawData = '';
+let source = '';
+
+// 1. Check ~/Downloads/posts.json first
+if (fs.existsSync(downloadedPostsFile)) {
   try {
-    clipboardText = execSync('pbpaste', { encoding: 'utf8' });
-  } catch {
-    console.error('❌ Could not read clipboard using pbpaste.');
-    process.exit(1);
-  }
+    rawData = fs.readFileSync(downloadedPostsFile, 'utf8');
+    source = 'Downloads folder (~/Downloads/posts.json)';
+    // Remove temporary download file
+    try { fs.unlinkSync(downloadedPostsFile); } catch {}
+  } catch {}
+}
 
-  if (!clipboardText || !clipboardText.trim().startsWith('[')) {
-    console.error('❌ No LinkedIn post JSON found on your clipboard.');
-    console.log('👉 First click your "⚡ Sync to Portfolio" bookmark on LinkedIn, then run this command again!');
-    process.exit(1);
-  }
+// 2. Fall back to Mac clipboard (pbpaste)
+if (!rawData) {
+  try {
+    const clip = execSync('pbpaste', { encoding: 'utf8' }).trim();
+    if (clip.startsWith('[') && clip.endsWith(']')) {
+      rawData = clip;
+      source = 'Mac Clipboard';
+    }
+  } catch {}
+}
 
-  const posts = JSON.parse(clipboardText);
+if (!rawData) {
+  console.log('\n❌ No fresh LinkedIn post data found.');
+  console.log('👉 Steps to sync:');
+  console.log('   1. Open LinkedIn: linkedin.com/in/aditya-raj-9b2165227/recent-activity/all/');
+  console.log('   2. Scroll down so your posts load.');
+  console.log('   3. Click your "⚡ Sync to Portfolio" bookmark.');
+  console.log('   4. Run this command again: npm run sync:clip\n');
+  process.exit(1);
+}
+
+try {
+  const posts = JSON.parse(rawData);
 
   if (!Array.isArray(posts) || posts.length === 0) {
-    console.error('❌ Clipboard data is not a valid list of posts.');
+    console.error('❌ Data is not a valid list of posts.');
     process.exit(1);
   }
 
@@ -46,13 +72,14 @@ try {
 
   fs.writeFileSync(targetPath, JSON.stringify(posts, null, 2) + '\n');
 
-  console.log(`\n🎉 SUCCESS! Updated src/data/posts.json with ${posts.length} posts from your clipboard!`);
-  console.log(`📊 Total verified reach: ${totalImpressions.toLocaleString()} impressions across top posts.\n`);
+  console.log(`\n🎉 SUCCESS! Loaded ${posts.length} posts from ${source}!`);
+  console.log(`📊 Total verified reach: ${totalImpressions.toLocaleString()} impressions across top posts.`);
+  console.log(`💾 Saved to src/data/posts.json\n`);
   posts.forEach((p, i) => {
-    console.log(`   ${i + 1}. [${p.impressions.toLocaleString()} views] ${p.title.slice(0, 70)}...`);
+    console.log(`   ${i + 1}. [${p.impressions.toLocaleString()} views] ${p.title.slice(0, 65)}...`);
   });
   console.log('');
 } catch (error) {
-  console.error('❌ Error processing clipboard:', error.message);
+  console.error('❌ Failed to parse JSON:', error.message);
   process.exit(1);
 }
